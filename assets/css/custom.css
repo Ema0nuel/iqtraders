@@ -1,0 +1,632 @@
+.text-white {
+  color: #ffff;
+  cursor: pointer;
+}
+.certificate {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.certificate img {
+  width: 500px;
+  height: auto;
+  max-width: 100%;
+}
+.admin-header {
+  width: 100%;
+  text-align: left;
+}
+.admin-small {
+  font-size: 10px;
+}
+.admin-info {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.admin-info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.admin-header h6 {
+  text-align: center;
+  font-size: 25px;
+}
+.admin-icon {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.admin-icon a {
+  font-size: 30px;
+  cursor: pointer;
+}
+.admin-icon a:hover {
+  scale: 1.1;
+}
+.privacy-header {
+  width: 100%;
+  text-align: left;
+  font-weight: 700;
+  font-size: 20px;
+}
+.text-left {
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+}
+.font-small {
+  font-weight: 400;
+  font-size: 10;
+}
+.widget-box {
+  width: 100%;
+  height: 325px;
+}
+.widget-view {
+  width: 100%;
+  height: 302px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.card-box {
+  background: #c0faa0;
+  border-radius: 10px;
+}
+.relative {
+  position: relative;
+}
+.w-add {
+  padding-top: 80px;
+}
+.w-add-120 {
+  padding-top: 300px;
+}
+.market-trend {
+  width: 100%;
+  height: 350px;
+}
+.price-change-upgrade,
+.price-change-downgrade {
+  padding: 10px 0;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.price-change-upgrade {
+  background-color: #c0faa0;
+  box-shadow: 0 0.5px 30px 0.5px #8cd66a;
+}
+.price-change-downgrade {
+  background-color: #f34141;
+  box-shadow: 0 0.5px 30px 0.5px #dbbdbd;
+}
+#d-push {
+  padding-bottom: 100px;
+}
+.w-full {
+  width: 100%;
+}
+.hidden {
+  display: none;
+}
+.p-icon {
+  position: absolute;
+  bottom: 8.6em;
+  right: 20px;
+  padding: 10px 0;
+}
+.DZ-theme-btn.DZ-bt-support-now {
+  display: none;
+}
+.DZ-theme-btn.DZ-bt-buy-now {
+  display: none;
+}
+@media (min-width: 1115px) {
+  .p-icon{
+    bottom: 7.5em;
+  }
+}
+
+/* POP UP DIV CONFIGURATION */
+#confirmation-popup {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Optional: Define a fade-in animation. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Style for the content *inside* the pop-up.  This is the actual dialog box. */
+.popup-content {
+  background-color: white; /* A white background is common for dialogs */
+  padding: 20px; /* Add some padding around the content */
+  border-radius: 8px; /* Rounded corners for a nicer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  text-align: center; /* Center the text within the dialog box. */
+  width: 90%; /* Limit the width of the dialog, so it's not too wide on small screens */
+  max-width: 400px; /* Set a maximum width for the dialog */
+  margin: 20px; /* Add some margin around the dialog box */
+  overflow-y: auto; /* Make content scrollable if it overflows */
+  max-height: 80vh;
+}
+
+/* Style for the title of the confirmation dialog */
+.popup-title {
+  font-size: 20px; /* Make the title larger than the body text */
+  font-weight: bold; /* Make the title bold */
+  margin-bottom: 10px; /* Add some space below the title */
+  color: #333;
+}
+
+/* Style for the message/body of the confirmation dialog */
+.popup-message {
+  font-size: 16px; /* Set the font size for the message */
+  margin-bottom: 20px; /* Add space below the message */
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Style for the buttons in the confirmation dialog */
+.popup-button {
+  padding: 10px 20px; /* Add padding to the buttons */
+  margin: 5px; /* Add margin around the buttons */
+  cursor: pointer; /* Show a pointer cursor on hover */
+  border: none; /* Remove the default button border */
+  border-radius: 5px; /* Add rounded corners to the buttons */
+  font-size: 16px; /* Set the font size for the buttons */
+  min-width: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-button:hover {
+  opacity: 0.8; /* Reduce opacity on hover for a visual effect */
+}
+
+/* Style for the "Confirm" button */
+.confirm-button {
+  background-color: #4caf50; /* Green background for confirmation */
+  color: white; /* White text color */
+}
+
+/* Style for the "Cancel" button */
+.cancel-button {
+  background-color: #f44336; /* Red background for cancellation */
+  color: white; /* White text color */
+}
+
+/* ANIMATION ICON SUCCESS */
+/* Keyframe animation for the checkmark */
+@keyframes drawCheckmark {
+  0% {
+    stroke-dashoffset: 100;
+    transform: rotate(0deg);
+  }
+  25% {
+    stroke-dashoffset: 100;
+    transform: rotate(90deg);
+  }
+  50% {
+    stroke-dashoffset: 100;
+    transform: rotate(180deg);
+  }
+  75% {
+    stroke-dashoffset: 100;
+    transform: rotate(270deg);
+  }
+  100% {
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
+  }
+}
+
+.checkmark {
+  /* Style for the SVG checkmark */
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  stroke-width: 6;
+  stroke: #10b981;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  animation: drawCheckmark 1.2s ease-in-out forwards; /* Increased duration */
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* Container for the entire animation sequence */
+.animation-container-p {
+  width: 500px;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 20px 0;
+}
+
+/* Wrapper for the checkmark and text */
+.checkmark-wrapper-p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-wrapper {
+  font-family: "Inter", sans-serif;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards 1.2s; /* Delayed fade-in */
+  color: #4b5563;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ANIMATION POP CANCEL */
+/* Keyframe animation for the X */
+@keyframes drawX {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    stroke-dashoffset: 50;
+    transform: rotate(180deg);
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+
+.x-mark {
+  /* Style for the SVG X mark */
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  stroke-width: 6;
+  stroke: #dc2626; /* Tailwind's red-600 */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  animation: drawX 1.2s ease-in-out forwards;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* Container for the entire animation sequence */
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Wrapper for the X mark and text */
+.x-mark-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-wrapper {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards 1.2s;
+  color: #4b5563;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .w-add {
+    padding-top: 0px;
+  }
+  .w-add-120 {
+    padding-top: 0px;
+  }
+  .animation-container-p {
+    width: 60%;
+  }
+  #copy-item {
+    right: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .animation-container-p{
+    width: 80%;
+  }
+  #copy-item {
+    top: 3px;
+  }
+}
+
+/* Keyframe animation for the notification icon */
+@keyframes drawNotification {
+  0% {
+    stroke-dashoffset: 100;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    stroke-dashoffset: 100;
+    transform: rotate(90deg);
+    opacity: 0.2;
+  }
+  50% {
+    stroke-dashoffset: 100;
+    transform: rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    stroke-dashoffset: 50;
+    transform: rotate(270deg);
+    opacity: 0.8;
+  }
+  90% {
+      stroke-dashoffset: 20;
+      opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.notification-icon {
+  /* Style for the SVG notification icon */
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  stroke-width: 6;
+  stroke: #f59e0b; /* Tailwind's amber-500 */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  animation: drawNotification 1.2s ease-in-out forwards;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* Container for the entire animation sequence */
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Wrapper for the icon and text */
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-wrapper {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards 1.2s;
+  color: #4b5563;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.f-thick{
+  font-size: 1.2em;
+}
+.f-xxl{
+  font-size: 2.5em;
+  font-weight: 800;
+}
+.icon-media img{
+  border-radius: 50%;
+}
+
+.deposit-div{
+  padding: 20px 10px;
+}
+.deposit-w{
+  width: 100%;
+}
+.deposit-form-header {
+  font-size: 2em;
+  font-weight: 700;
+  font-family: "Inter";
+  padding: 10px 0;
+  text-align: center;
+}
+.deposit-input{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 3px;
+  margin-bottom: 0.6em;
+}
+.deposit-input label{
+  width: 100%;
+  font-weight: 600;
+  padding-left: 3px;
+  color: #a3a3a3;
+  font-size: 14px;
+}
+.deposit-input input{
+  width: 100%;
+  font-family: "Inter";
+  padding: 13px 10px;
+  line-height: 1.6rem;
+  outline: 1px solid #d1d1d1;
+  font-size: 13px;
+}
+.deposit-input select{
+  outline: 1px solid #d1d1d1;
+  color: #a3a3a3;
+}
+#copy-item{
+  position: absolute;
+  right: 15px;
+  bottom: 3px;
+  cursor: pointer;
+  color: #a3a3a3;
+}
+.form-btn{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.form-btn button{
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.pt-short{
+  padding-top: 0;
+}
+.cancel-sign-btn{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #c4c4c4;
+  font-weight: 900;
+  font-size: 16px;
+  border-radius: 50%;
+  padding: 3px;
+  z-index: 1000;
+  cursor: pointer;
+  color: #ff0000;
+}
+.t-margin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-level{
+  color: blueviolet;
+}
+.e-price,
+.m-price {
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  text-align: center;
+  margin-top: 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.m-price{
+  color: rgb(1, 1, 1);
+}
+.time-stamp{
+  margin-top: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 7px;
+  text-align: center;
+  padding: 4px;
+}
+.time-stamp .tt{
+  background: #f0f0f0;
+  padding: 15px 0;
+  border-radius: 3.5px;
+  font-weight: 600;
+}
+.tt i{
+  color: #d1d1d1;
+}
+.btn-t{
+  margin-top: 80px;
+}
+.validate-text{
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+}
+.border-tt{
+  border: 1px solid #d1d1d1;
+}
+.btn-google{
+  width: 100%;
+  box-shadow: 1px 0.3px 10px 1px #dadada;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  background: #0654f0;
+}
+.btn-google:hover{
+  color: #fff;
+}

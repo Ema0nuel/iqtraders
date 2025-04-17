@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="iqtraders" />
+  <meta name="robots" content="" />
+  <meta name="description" content="iqtraders : Crypto Trading" />
+  <meta property="og:title" content="iqtraders : Crypto Trading" />
+  <meta property="og:description" content="iqtraders : Crypto Trading" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Title -->
+  <title>IQ Traders</title>
+  <!-- Customer-care -->
+  <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="p0CoJ6XmhRZOAFbi_W9pA";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/animation.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- HOME CSS -->
+
+  <!-- Stylesheet -->
+  <link href="../assets/vendor/animate/animate.css" rel="stylesheet" />
+  <link href="../assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="../assets/vendor/rangeslider/rangeslider.css" rel="stylesheet" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link class="skin" rel="stylesheet" href="../assets/css/skin/skin-7.css" />
+
+  <!-- CDN JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css"
+    integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+  <!-- Font -->
+  <link rel="stylesheet" href="font/fonts.css" />
+
+  <!-- Icon -->
+  <link rel="stylesheet" href="icon/style.css" />
+
+  <!-- Custom Css -->
+  <link rel="stylesheet" href="../assets/css/custom.css" />
+</head>
+
+<body class="counter-scroll">
+  <!--loader start -->
+  <div id="loading-area" class="loading-page-1">
+    <div class="loader">
+      <div class="loading-dot"></div>
+    </div>
+  </div>
+  <!--loader start -->
+  <div id="confirmation-popup" style="display: none"></div>
+  <div id="wrapper">
+    <!-- #page -->
+    <div id="page" class="">
+      <!-- layout-wrap -->
+      <div class="layout-wrap loader-off">
+        <!-- preload -->
+        <div id="preload" class="preload-container">
+          <div class="preloading">
+            <span></span>
+          </div>
+        </div>
+        <!-- /preload -->
+        <!-- section-menu-left -->
+        <div class="section-menu-left" id="js-navbar"></div>
+        <!-- /section-menu-left -->
+        <!-- section-content-right -->
+        <div class="section-content-right">
+          <!-- header-dashboard -->
+          <div class="header-dashboard">
+            <div class="wrap" id="js-right-navbar"></div>
+          </div>
+          <!-- /header-dashboard -->
+          <!-- main-content -->
+          <div class="main-content">
+            <!-- main-content-wrap -->
+            <div class="main-content-inner">
+              <!-- main-content-wrap -->
+              <div class="main-content-wrap">
+                <div class="tf-container">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-20 flex flex-wrap justify-between gap14 items-center">
+                        <h6>Wallet Details</h6>
+                        <div class="flex items-center flex-wrap gap6">
+                          <a id="withdraw-btn" class="tf-button style-4 f12-bold cursor-pointer border-tt">
+                            <i class="fa-solid fa-money-bill-transfer"></i> 
+                            Place Withdrawal
+                          </a>
+                        </div>
+                        <div class="flex items-center flex-wrap gap6">
+                          <a id="new-card" class="tf-button style-4 f12-bold cursor-pointer border-tt">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M7.99992 11.3335C8.18881 11.3335 8.34725 11.2695 8.47525 11.1415C8.60281 11.0139 8.66658 10.8557 8.66658 10.6668V8.66683H10.6833C10.8721 8.66683 11.0277 8.60283 11.1499 8.47483C11.2721 8.34727 11.3333 8.18905 11.3333 8.00016C11.3333 7.81127 11.2693 7.65283 11.1413 7.52483C11.0137 7.39727 10.8555 7.3335 10.6666 7.3335H8.66658V5.31683C8.66658 5.12794 8.60281 4.97238 8.47525 4.85016C8.34725 4.72794 8.18881 4.66683 7.99992 4.66683C7.81103 4.66683 7.65281 4.73061 7.52525 4.85816C7.39725 4.98616 7.33325 5.14461 7.33325 5.3335V7.3335H5.31659C5.1277 7.3335 4.97214 7.39727 4.84992 7.52483C4.7277 7.65283 4.66658 7.81127 4.66658 8.00016C4.66658 8.18905 4.73036 8.34727 4.85792 8.47483C4.98592 8.60283 5.14436 8.66683 5.33325 8.66683H7.33325V10.6835C7.33325 10.8724 7.39725 11.0279 7.52525 11.1502C7.65281 11.2724 7.81103 11.3335 7.99992 11.3335ZM7.99992 14.6668C7.0777 14.6668 6.21103 14.4917 5.39992 14.1415C4.58881 13.7917 3.88325 13.3168 3.28325 12.7168C2.68325 12.1168 2.20836 11.4113 1.85859 10.6002C1.50836 9.78905 1.33325 8.92238 1.33325 8.00016C1.33325 7.07794 1.50836 6.21127 1.85859 5.40016C2.20836 4.58905 2.68325 3.8835 3.28325 3.2835C3.88325 2.6835 4.58881 2.20838 5.39992 1.85816C6.21103 1.50838 7.0777 1.3335 7.99992 1.3335C8.92214 1.3335 9.78881 1.50838 10.5999 1.85816C11.411 2.20838 12.1166 2.6835 12.7166 3.2835C13.3166 3.8835 13.7915 4.58905 14.1413 5.40016C14.4915 6.21127 14.6666 7.07794 14.6666 8.00016C14.6666 8.92238 14.4915 9.78905 14.1413 10.6002C13.7915 11.4113 13.3166 12.1168 12.7166 12.7168C12.1166 13.3168 11.411 13.7917 10.5999 14.1415C9.78881 14.4917 8.92214 14.6668 7.99992 14.6668ZM7.99992 13.3335C9.4777 13.3335 10.7361 12.8142 11.7753 11.7755C12.8139 10.7364 13.3333 9.47794 13.3333 8.00016C13.3333 6.52238 12.8139 5.26394 11.7753 4.22483C10.7361 3.18616 9.4777 2.66683 7.99992 2.66683C6.52214 2.66683 5.26392 3.18616 4.22525 4.22483C3.18614 5.26394 2.66659 6.52238 2.66659 8.00016C2.66659 9.47794 3.18614 10.7364 4.22525 11.7755C5.26392 12.8142 6.52214 13.3335 7.99992 13.3335Z"
+                                fill="#161326" />
+                            </svg>
+                            Add Card
+                          </a>
+                        </div>
+                        <div class="flex items-center flex-wrap gap6">
+                          <a id="new-deposit" class="tf-button style-4 f12-bold cursor-pointer border-tt">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M7.99992 11.3335C8.18881 11.3335 8.34725 11.2695 8.47525 11.1415C8.60281 11.0139 8.66658 10.8557 8.66658 10.6668V8.66683H10.6833C10.8721 8.66683 11.0277 8.60283 11.1499 8.47483C11.2721 8.34727 11.3333 8.18905 11.3333 8.00016C11.3333 7.81127 11.2693 7.65283 11.1413 7.52483C11.0137 7.39727 10.8555 7.3335 10.6666 7.3335H8.66658V5.31683C8.66658 5.12794 8.60281 4.97238 8.47525 4.85016C8.34725 4.72794 8.18881 4.66683 7.99992 4.66683C7.81103 4.66683 7.65281 4.73061 7.52525 4.85816C7.39725 4.98616 7.33325 5.14461 7.33325 5.3335V7.3335H5.31659C5.1277 7.3335 4.97214 7.39727 4.84992 7.52483C4.7277 7.65283 4.66658 7.81127 4.66658 8.00016C4.66658 8.18905 4.73036 8.34727 4.85792 8.47483C4.98592 8.60283 5.14436 8.66683 5.33325 8.66683H7.33325V10.6835C7.33325 10.8724 7.39725 11.0279 7.52525 11.1502C7.65281 11.2724 7.81103 11.3335 7.99992 11.3335ZM7.99992 14.6668C7.0777 14.6668 6.21103 14.4917 5.39992 14.1415C4.58881 13.7917 3.88325 13.3168 3.28325 12.7168C2.68325 12.1168 2.20836 11.4113 1.85859 10.6002C1.50836 9.78905 1.33325 8.92238 1.33325 8.00016C1.33325 7.07794 1.50836 6.21127 1.85859 5.40016C2.20836 4.58905 2.68325 3.8835 3.28325 3.2835C3.88325 2.6835 4.58881 2.20838 5.39992 1.85816C6.21103 1.50838 7.0777 1.3335 7.99992 1.3335C8.92214 1.3335 9.78881 1.50838 10.5999 1.85816C11.411 2.20838 12.1166 2.6835 12.7166 3.2835C13.3166 3.8835 13.7915 4.58905 14.1413 5.40016C14.4915 6.21127 14.6666 7.07794 14.6666 8.00016C14.6666 8.92238 14.4915 9.78905 14.1413 10.6002C13.7915 11.4113 13.3166 12.1168 12.7166 12.7168C12.1166 13.3168 11.411 13.7917 10.5999 14.1415C9.78881 14.4917 8.92214 14.6668 7.99992 14.6668ZM7.99992 13.3335C9.4777 13.3335 10.7361 12.8142 11.7753 11.7755C12.8139 10.7364 13.3333 9.47794 13.3333 8.00016C13.3333 6.52238 12.8139 5.26394 11.7753 4.22483C10.7361 3.18616 9.4777 2.66683 7.99992 2.66683C6.52214 2.66683 5.26392 3.18616 4.22525 4.22483C3.18614 5.26394 2.66659 6.52238 2.66659 8.00016C2.66659 9.47794 3.18614 10.7364 4.22525 11.7755C5.26392 12.8142 6.52214 13.3335 7.99992 13.3335Z"
+                                fill="#161326" />
+                            </svg>
+                            Deposit Fund
+                          </a>
+                        </div>
+                      </div>
+                      <div class="mb-32">
+                        <div class="swiper tf-sw-card">
+                          <div class="swiper-wrapper card-box">
+                            <div class="swiper-slide">
+                              <div class="my-card-item bg-1">
+                                <div class="number">
+                                  <div class="f12-medium text-GrayDark">
+                                    Main Wallet
+                                  </div>
+                                  <div class="label-01 f-xxl" id="crypto-balance"></div>
+                                </div>
+                                <div class="bot">
+                                  <div class="f12-medium f-thick" id="wallet-id">
+                                  </div>
+                                </div>
+                                <div class="icon">
+                                  <svg width="35" height="22" viewBox="0 0 35 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="10.9373" cy="11" rx="10.9373" ry="11" fill="#161326"
+                                      fill-opacity="0.67" />
+                                    <ellipse cx="24.0627" cy="11" rx="10.9373" ry="11" fill="#161326"
+                                      fill-opacity="0.7" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="wg-box card-details mb-32">
+                        <div class="title">
+                          <h6>User Card Details</h6>
+                          <div class="d-flex gap8">
+                          </div>
+                        </div>
+                        <div class="content">
+                          <div class="left w-full" id="card-details">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 mb-32">
+                    <div class="flex justify-between items-center mb-16">
+                      <div class="">
+                        <h6 class="mb-4">Overview Balance</h6>
+                        <div class="f14-regular text-Gray">Total Income</div>
+                      </div>
+                    </div>
+                    <div class="flex justify-between items-center mb-24">
+                      <div class="flex gap10 items-center">
+                        <div class="f12-medium">Bonus Income</div>
+                        <div class="f12-bold text-YellowGreen" id="bonus-income"></div>
+                      </div>
+                      <div class="flex gap10 items-center">
+                        <div class="label-01" id="total-income"></div>
+                        <div class="f12-bold text-YellowGreen" id="income-percent"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /main-content-wrap -->
+          </div>
+          <!-- /main-content-wrap -->
+        </div>
+        <!-- /main-content -->
+      </div>
+      <!-- /section-content-right -->
+    </div>
+    <!-- /layout-wrap -->
+  </div>
+  <!-- /#page -->
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Javascript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/countto.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-select.min.js"></script>
+  <script src="js/apexcharts/apexcharts.js"></script>
+  <script src="js/apexcharts/small-chart-1.js"></script>
+  <script src="js/apexcharts/small-chart-2.js"></script>
+  <script src="js/apexcharts/small-chart-3.js"></script>
+  <script src="js/apexcharts/small-chart-4.js"></script>
+  <script src="js/apexcharts/line-chart-twoline.js"></script>
+  <script src="js/apexcharts/candlestick-1.js"></script>
+  <script src="js/apexcharts/candlestick-4.js"></script>
+  <script src="js/apexcharts/candlestick-5.js"></script>
+  <script src="js/switcher.js"></script>
+  <script defer src="js/theme-settings.js"></script>
+  <!-- Animation Icon -->
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <!-- CDN JS SCRIPT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+    integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/brands.min.js"
+    integrity="sha512-ILOQokRQNF0S8SKV6fnaLNj02CmZnDWmYUr3zlH4jwToep0lWc7twuTzF+Mm0cKPdszi0xe8KymVi2y7mAweVQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Theme Js -->
+  <script src="js/main.js"></script>
+  <!-- Home JAVASCRIPT -->
+  <script src="../assets/vendor/counter/waypoints-min.js"></script>
+  <!-- WAYPOINTS JS -->
+  <script src="../assets/vendor/counter/counterup.min.js"></script>
+  <!-- CUSTOM JS -->
+  <script src="../assets/js/custom.js"></script>
+
+  <!-- Controller Js -->
+  <script type="module" src="b-js/controller.js"></script>
+  <!-- USER AUTHENTICATION -->
+  <script type="module" src="./b-Js/wallet.js"></script>
+
+  <script type="module" src="./b-Js/signout.js"></script>
+</body>
+
+</html>

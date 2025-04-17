@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="iqtraders" />
+    <meta name="robots" content="" />
+    <meta name="description" content="iqtraders : Crypto Trading" />
+    <meta property="og:title" content="iqtraders : Crypto Trading" />
+    <meta property="og:description" content="iqtraders : Crypto Trading" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title -->
+    <title>IQ Traders</title>
+    <!-- Customer-care -->
+    <script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="p0CoJ6XmhRZOAFbi_W9pA";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        </script>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- HOME CSS -->
+
+    <!-- Stylesheet -->
+    <link href="../assets/vendor/animate/animate.css" rel="stylesheet" />
+    <link href="../assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/rangeslider/rangeslider.css" rel="stylesheet" />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link class="skin" rel="stylesheet" href="../assets/css/skin/skin-7.css" />
+
+    <!-- CDN JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css"
+        integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="font/fonts.css" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="icon/style.css" />
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+</head>
+
+<body class="counter-scroll">
+    <!--loader start -->
+    <div id="loading-area" class="loading-page-1">
+        <div class="loader">
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+    <div id="confirmation-popup" style="display: none"></div>
+    <!--loader start -->
+    <div id="wrapper">
+        <!-- #page -->
+        <div id="page" class="">
+            <!-- layout-wrap -->
+            <div class="layout-wrap loader-off">
+                <!-- preload -->
+                <div id="preload" class="preload-container">
+                    <div class="preloading">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- /preload -->
+                <!-- section-menu-left -->
+                <div class="section-menu-left" id="js-navbar"></div>
+                <!-- /section-menu-left -->
+                <!-- section-content-right -->
+                <div class="section-content-right">
+                    <!-- header-dashboard -->
+                    <div class="header-dashboard">
+                        <div class="wrap" id="js-right-navbar"></div>
+                    </div>
+                    <!-- /header-dashboard -->
+                    <!-- main-content -->
+                    <div class="main-content">
+                        <!-- main-content-wrap -->
+                        <div class="main-content-inner">
+                            <!-- main-content-wrap -->
+                            <div class="main-content-wrap relative">
+                                <div class="tf-container">
+                                    <div class="wg-box style-1 p-32 gap16 bg-Gainsboro shadow-none mb-23">
+                                        <h5>Account Security</h5>
+                                        <div class="flex flex-wrap row-gap-16 gap36 items-center">
+                                            <div class="flex gap6 items-center">
+                                                <input type="checkbox" name="two-fa" id="two-fa">
+                                                <div class="f14-regular">2 FA</div>
+                                            </div>
+                                            <div class="flex gap6 items-center">
+                                                <input type="checkbox" name="kyc-valid" id="kyc-valid">
+                                                <div class="f14-regular">KYC Verification</div>
+                                            </div>
+                                            <div class="flex gap6 items-center">
+                                                <input type="checkbox" name="anti-phishing-code" id="anti-phishing-code">
+                                                <div class="f14-regular">
+                                                    Enable Anti-phishing Code
+                                                </div>
+                                            </div>
+                                            <div class="flex gap6 items-center">
+                                                <input type="checkbox" name="whitelist" id="whitelist">
+                                                <div class="f14-regular">
+                                                    Turn-on Withdrawal Whitelist
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-account-security">
+                                        <div class="left">
+                                            <div class="account-security-item mb-24">
+                                                <div class="heading">
+                                                    <div class="label-01 mb-8">
+                                                        2 Factor Authentication
+                                                    </div>
+                                                    <div class="f12-regular text-GrayDark">
+                                                        Two-factor authentication is an enhanced security
+                                                        measure. Once enabled, you'll be required to give
+                                                        two types of identification when you log into
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="content-item">
+                                                        <input class="tf-check flex-shrink-0" type="checkbox" id="google-auth"/>
+                                                        <div class="icon flex-shrink-0">
+                                                            <i class="icon-google"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-6 f12-bold">
+                                                                Google Authentication
+                                                            </div>
+                                                            <div class="f12-regular text-GrayDark">
+                                                                Used for withdrawal & Security verification
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-item">
+                                                        <input class="tf-check flex-shrink-0" type="checkbox" id="email-auth" />
+                                                        <div class="icon flex-shrink-0">
+                                                            <i class="icon-message-text1"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-6 f12-bold">
+                                                                Email Verified
+                                                            </div>
+                                                            <div class="f12-regular text-GrayDark">
+                                                                Ensure user verified their email address link sent to mailbox
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content-item">
+                                                        <input class="tf-check flex-shrink-0" type="checkbox" checked />
+                                                        <div class="icon flex-shrink-0">
+                                                            <i class="icon-sms-tracking"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-6 f12-bold">
+                                                                Email Authentication
+                                                            </div>
+                                                            <div class="f12-regular text-GrayDark">
+                                                                Used for withdrawal & Security verification
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="account-security-item mb-24">
+                                                <div class="heading">
+                                                    <div class="label-01 mb-8">
+                                                        Identify Verification (KYC)
+                                                    </div>
+                                                    <div class="f12-regular text-GrayDark">
+                                                        Identify Verification is an enhanced security
+                                                        measure. Once enabled,it means you have completed your KYC Verification
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="content-item">
+                                                        <input class="tf-check flex-shrink-0" type="checkbox" id="kyc-id-valid" />
+                                                        <div class="icon flex-shrink-0">
+                                                            <i class="icon-person"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-6 f12-bold">
+                                                                Manage Identify Verification
+                                                            </div>
+                                                            <div class="f12-regular text-GrayDark">
+                                                                Used for withdrawal & Security verification
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="account-security-item mb-24">
+                                                <div class="heading">
+                                                    <div class="label-01 mb-8">Anti-phishing Code</div>
+                                                    <div class="f12-regular text-GrayDark">
+                                                        Identify Verification is an enhanced security
+                                                        measure. Once enabled, you'll be guided from anti-phishing hack and fraud.
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="content-item">
+                                                        <input class="tf-check flex-shrink-0" type="checkbox" id="anti-phishing-id-code"/>
+                                                        <div class="icon flex-shrink-0">
+                                                            <i class="icon-message-text1"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-6 f12-bold">
+                                                                Enable Anti-phishing Code
+                                                            </div>
+                                                            <div class="f12-regular text-GrayDark">
+                                                                Enable Anti-phishing Code & Security
+                                                                verification
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="account-security-item d-block mb-24">
+                                                <div class="content-item mb-24">
+                                                    <div class="icon flex-shrink-0">
+                                                        <i class="icon-mouse-square"></i>
+                                                    </div>
+                                                    <div class="flex-grow">
+                                                        <div class="mb-6 f12-bold">Account Management</div>
+                                                        <div class="f12-regular text-GrayDark">
+                                                            This ensures the registered Date
+                                                        </div>
+                                                    </div>
+                                                    <a id="account-management" class="flex-shrink-0 f12-medium">2024</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-security-item d-block mb-24">
+                                                <div class="content-item mb-16">
+                                                    <div class="icon flex-shrink-0">
+                                                        <i class="icon-gps"></i>
+                                                    </div>
+                                                    <div class="flex-grow">
+                                                        <div class="mb-6 f12-bold">
+                                                            Activate Withdrawal
+                                                        </div>
+                                                        <div class="f12-regular text-GrayDark">
+                                                            Used for withdrawal & Security verification
+                                                        </div>
+                                                    </div>
+                                                    <a href="./my-wallet.html" class="flex-shrink-0 f12-medium">Check</a>
+                                                </div>
+                                                <div class="flex items-center gap8">
+                                                    <div class="f12-medium">Whitelist on</div>
+                                                    <input class="tf-check flex-shrink-0" type="checkbox" id="whitelist-id" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- User Info -->
+                                <div class="account-security-item mb-24">
+                                    <div class="heading">
+                                        <div class="label-01 mb-8">
+                                            User Info
+                                        </div>
+
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">USERNAME:</div>
+                                                <div class="f12-regular text-GrayDark" id="user-name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">EMAIL ADDRESS:</div>
+                                                <div class="f12-regular text-GrayDark" id="user-email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">COUNTRY</div>
+                                                <div class="f12-regular text-GrayDark" id="user-country">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">PHONE NO</div>
+                                                <div class="f12-regular text-GrayDark" id="user-phone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">INVESTMENT CURRENCY</div>
+                                                <div class="f12-regular text-GrayDark" id="i-coin">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-item mb-16">
+                                            <div class="icon flex-shrink-0">
+                                                <i class="icon-person"></i>
+                                            </div>
+                                            <div class="flex-grow">
+                                                <div class="mb-6 f12-bold">WALLET ADDRESS</div>
+                                                <div class="f12-regular text-GrayDark" id="user-wallet">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /main-content-wrap -->
+                        </div>
+                        <!-- /main-content-wrap -->
+                        <!-- /main-content -->
+                    </div>
+                    <!-- /section-content-right -->
+                </div>
+                <!-- /layout-wrap -->
+            </div>
+            <!-- /#page -->
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Javascript -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/countto.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-select.min.js"></script>
+        <script src="js/apexcharts/apexcharts.js"></script>
+        <script src="js/apexcharts/small-chart-1.js"></script>
+        <script src="js/apexcharts/small-chart-2.js"></script>
+        <script src="js/apexcharts/small-chart-3.js"></script>
+        <script src="js/apexcharts/small-chart-4.js"></script>
+        <script src="js/apexcharts/line-chart-twoline.js"></script>
+        <script src="js/apexcharts/candlestick-1.js"></script>
+        <script src="js/apexcharts/candlestick-4.js"></script>
+        <script src="js/apexcharts/candlestick-5.js"></script>
+        <script src="js/switcher.js"></script>
+        <script defer src="js/theme-settings.js"></script>
+        <!-- CDN JS SCRIPT -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+            integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/brands.min.js"
+            integrity="sha512-ILOQokRQNF0S8SKV6fnaLNj02CmZnDWmYUr3zlH4jwToep0lWc7twuTzF+Mm0cKPdszi0xe8KymVi2y7mAweVQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Theme Js -->
+        <script src="js/main.js"></script>
+        <!-- Home JAVASCRIPT -->
+        <script src="../assets/vendor/counter/waypoints-min.js"></script>
+        <!-- WAYPOINTS JS -->
+        <script src="../assets/vendor/counter/counterup.min.js"></script>
+        <!-- CUSTOM JS -->
+        <script src="../assets/js/custom.js"></script>
+
+        <!-- Controller Js -->
+        <script type="module" src="b-js/controller.js"></script>
+        <!-- USER AUTHENTICATION -->
+        <script type="module" src="./b-Js/settings.js"></script>
+        
+     <script type="module" src="./b-Js/signout.js"></script>
+</body>
+
+</html>

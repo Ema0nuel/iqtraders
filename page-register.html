@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="iqtraders" />
+    <meta name="robots" content="" />
+    <meta name="description" content="iqtraders : Crypto Trading" />
+    <meta property="og:title" content="iqtraders : Crypto Trading" />
+    <meta property="og:description" content="iqtraders : Crypto Trading" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title -->
+    <title>IQ Traders</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+    <!-- Stylesheet -->
+    <link href="assets/vendor/animate/animate.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/magnific-popup/magnific-popup.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="assets/vendor/rangeslider/rangeslider.css" rel="stylesheet" />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link class="skin" rel="stylesheet" href="assets/css/skin/skin-7.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CDN JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css"
+      integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Animation Css -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="vh-100">
+    <div id="confirmation-popup" style="display: none"></div>
+
+    <div class="authincation h-100">
+      <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+          <div class="col-md-6">
+            <div class="authincation-content">
+              <div class="row no-gutters">
+                <div class="col-xl-12">
+                  <div class="auth-form">
+                    <div class="text-center mb-3">
+                      <a class="brand-logo">
+                        <svg
+                          class="logo-abbr"
+                          width="50"
+                          height="50"
+                          viewBox="0 0 50 50"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            class="svg-logo-rect"
+                            width="50"
+                            height="50"
+                            rx="6"
+                            fill="#558B2F"
+                          />
+                          <path
+                            class="svg-logo-path"
+                            d="M17.5158 25.8619L19.8088 25.2475L14.8746 11.1774C14.5189 9.84988 15.8701 9.0998 16.8205 9.75055L33.0924 22.2055C33.7045 22.5589 33.8512 24.0717 32.6444 24.3951L30.3514 25.0095L35.2856 39.0796C35.6973 40.1334 34.4431 41.2455 33.3397 40.5064L17.0678 28.0515C16.2057 27.2477 16.5504 26.1205 17.5158 25.8619ZM18.685 14.2955L22.2224 24.6007L29.4633 22.6605L18.685 14.2955ZM31.4751 35.9615L27.8171 25.6886L20.5762 27.6288L31.4751 35.9615Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <span class="sign-up">IQ TRADERS</span>
+                      </a>
+                    </div>
+                    <div id="signin-div" class="relative">
+                      <h4 class="text-center mb-4">Sign into your account</h4>
+                      <form id="sign-in-form">
+                        <div class="form-group">
+                          <label class="mb-1"><strong>Email</strong></label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="hello@example.com"
+                            id="signin-email"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="mb-1"><strong>Password</strong></label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            id="signin-password"
+                            required
+                          />
+                        </div>
+                        <span class="p-icon cursor-pointer" id="signin-p-icon">
+                          <i class="fas fa-eye"></i>
+                        </span>
+                        <div class="text-center mt-4">
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-block w-full"
+                            id="signin-log"
+                          >
+                            Login
+                          </button>
+                        </div>
+                      </form>
+                      <div class="new-account mt-3">
+                        <p>
+                          New to IQ Traders?
+                          <a
+                            class="text-primary cursor-pointer"
+                            id="signup-link"
+                            >Sign Up</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                    <div id="signup-div" class="hidden relative">
+                      <h4 class="text-center mb-4">Create an Account</h4>
+                      <form id="sign-up-form">
+                        <div class="form-group">
+                          <label class="mb-1"
+                            ><strong>First Name</strong></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="John"
+                            id="signup-fname"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="mb-1"><strong>Last Name</strong></label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Doe"
+                            id="signup-lname"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="mb-1"><strong>Email</strong></label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="hello@example.com"
+                            id="signup-email"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="mb-1"
+                            ><strong>Phone Number</strong></label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="+441234567890"
+                            id="signup-phone"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label class="mb-1"><strong>Password</strong></label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            id="signup-password"
+                            required
+                          />
+                          <span
+                            class="p-icon cursor-pointer"
+                            id="signup-p-icon"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </span>
+                        </div>
+                        <div class="text-center mt-4">
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-block w-full"
+                            id="signup-register"
+                          >
+                            Sign Up
+                          </button>
+                        </div>
+                      </form>
+                      <div class="new-account mt-3">
+                        <p>
+                          Already have an account?
+                          <a
+                            class="text-primary cursor-pointer"
+                            id="signin-link"
+                            >Sign In</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--**********************************
+	Scripts
+***********************************-->
+    <!-- JAVASCRIPT FILES ========================================= -->
+    <!-- ANIMATION POP UP -->
+
+    <script type="module" src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- JQUERY.MIN JS -->
+    <script src="assets/js/anm.js"></script>
+    <!-- JQUERY.MIN JS -->
+    <script src="assets/vendor/wow/wow.js"></script>
+    <!-- WOW.JS -->
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- OWL slider -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- WOW.JS -->
+    <script src="assets/vendor/counter/waypoints-min.js"></script>
+    <!-- WAYPOINTS JS -->
+    <script src="assets/vendor/counter/counterup.min.js"></script>
+    <!-- COUNTER UP JS -->
+    <script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <!-- OWL SLIDER -->
+    <script src="assets/js/dz.carousel.js"></script>
+    <!-- OWL SLIDER -->
+    <script src="assets/vendor/apexchart/js/apexcharts.min.js"></script>
+    <!-- OWL SLIDER -->
+    <script src="assets/js/dz.ajax.js"></script>
+    <!-- AJAX -->
+    <script src="assets/js/chart-init.js"></script>
+    <!-- Chart Init -->
+    <script src="assets/js/custom.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="assets/vendor/rangeslider/rangeslider.js"></script>
+    <!-- RANGE SLIDER -->
+
+    <!-- CDN JS  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+      integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/brands.min.js"
+      integrity="sha512-ILOQokRQNF0S8SKV6fnaLNj02CmZnDWmYUr3zlH4jwToep0lWc7twuTzF+Mm0cKPdszi0xe8KymVi2y7mAweVQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- CUSTOM JAVASCRIPT -->
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./user/b-Js/register.js"></script>
+  </body>
+</html>

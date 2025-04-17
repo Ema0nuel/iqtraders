@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="iqtraders" />
+    <meta name="robots" content="" />
+    <meta name="description" content="iqtraders : Crypto Trading" />
+    <meta property="og:title" content="iqtraders : Crypto Trading" />
+    <meta property="og:description" content="iqtraders : Crypto Trading" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title -->
+    <title>IQ Traders</title>
+    <!-- Customer-care -->
+    <script>
+      (function () {
+        if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+          window.chatbase = (...arguments) => {
+            if (!window.chatbase.q) {
+              window.chatbase.q = [];
+            }
+            window.chatbase.q.push(arguments);
+          };
+          window.chatbase = new Proxy(window.chatbase, {
+            get(target, prop) {
+              if (prop === "q") {
+                return target.q;
+              }
+              return (...args) => target(prop, ...args);
+            },
+          });
+        }
+        const onLoad = function () {
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.id = "p0CoJ6XmhRZOAFbi_W9pA";
+          script.domain = "www.chatbase.co";
+          document.body.appendChild(script);
+        };
+        if (document.readyState === "complete") {
+          onLoad();
+        } else {
+          window.addEventListener("load", onLoad);
+        }
+      })();
+    </script>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- HOME CSS -->
+
+    <!-- Stylesheet -->
+    <link href="../assets/vendor/animate/animate.css" rel="stylesheet" />
+    <link
+      href="../assets/vendor/magnific-popup/magnific-popup.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/swiper/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/rangeslider/rangeslider.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link class="skin" rel="stylesheet" href="../assets/css/skin/skin-7.css" />
+
+    <!-- CDN JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css"
+      integrity="sha512-58P9Hy7II0YeXLv+iFiLCv1rtLW47xmiRpC1oFafeKNShp8V5bKV/ciVtYqbk2YfxXQMt58DjNfkXFOn62xE+g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="font/fonts.css" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="icon/style.css" />
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+  </head>
+
+  <body class="counter-scroll">
+    <!--loader start -->
+    <div id="loading-area" class="loading-page-1">
+      <div class="loader">
+        <div class="loading-dot"></div>
+      </div>
+    </div>
+    <!--loader start -->
+    <div id="confirmation-popup" style="display: none"></div>
+    <!-- #wrapper -->
+    <div id="wrapper">
+      <!-- #page -->
+      <div id="page" class="">
+        <!-- layout-wrap -->
+        <div class="layout-wrap loader-off">
+          <!-- section-menu-left -->
+          <div class="section-menu-left" id="js-navbar"></div>
+
+          <!-- section-content-right -->
+          <div class="section-content-right">
+            <!-- header-dashboard -->
+            <div class="header-dashboard">
+              <div class="wrap" id="js-right-navbar"></div>
+            </div>
+
+            <!-- /header-dashboard -->
+            <!-- main-content -->
+            <div class="main-content">
+              <!-- main-content-wrap -->
+              <div class="main-content-inner">
+                <!-- main-content-wrap -->
+                <div class="main-content-wrap">
+                  <div class="tf-container">
+                    <div
+                      class="mb-32 flex flex-wrap justify-between gap14 items-center"
+                    >
+                      <h6>Coin Details</h6>
+                      <div class="flex items-center flex-wrap">
+                        <a class="tf-button style-4 f12-bold">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9.98018 8.5H9.46685H6.35352V10.3867H7.22685H9.98018C10.6135 10.3867 11.1335 9.96 11.1335 9.44C11.1335 8.92 10.6135 8.5 9.98018 8.5Z"
+                              fill="#161326"
+                            />
+                            <path
+                              d="M7.99967 1.3335C4.31967 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31967 14.6668 7.99967 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99967 1.3335ZM9.97967 11.3868H8.87967V12.3335C8.87967 12.6068 8.65301 12.8335 8.37967 12.8335C8.10634 12.8335 7.87967 12.6068 7.87967 12.3335V11.3868H7.22634H7.07301V12.3335C7.07301 12.6068 6.84634 12.8335 6.57301 12.8335C6.29967 12.8335 6.07301 12.6068 6.07301 12.3335V11.3868H5.85301H4.69967C4.42634 11.3868 4.19967 11.1602 4.19967 10.8868C4.19967 10.6135 4.42634 10.3868 4.69967 10.3868H5.35301V8.00016V5.6135H4.69967C4.42634 5.6135 4.19967 5.38683 4.19967 5.1135C4.19967 4.84016 4.42634 4.6135 4.69967 4.6135H5.85301H6.07301V3.66683C6.07301 3.3935 6.29967 3.16683 6.57301 3.16683C6.84634 3.16683 7.07301 3.3935 7.07301 3.66683V4.6135H7.22634H7.87967V3.66683C7.87967 3.3935 8.10634 3.16683 8.37967 3.16683C8.65301 3.16683 8.87967 3.3935 8.87967 3.66683V4.6135H9.46634C10.4997 4.6135 11.413 5.52016 11.413 6.56016C11.413 7.00683 11.253 7.4135 10.9997 7.74683C11.673 8.07349 12.133 8.7135 12.133 9.4535C12.133 10.5135 11.1663 11.3868 9.97967 11.3868Z"
+                              fill="#161326"
+                            />
+                            <path
+                              d="M10.4135 6.55311C10.4135 6.11311 10.0002 5.60645 9.46685 5.60645H7.22685H6.35352V7.49311H9.46685C9.98685 7.49978 10.4135 7.07311 10.4135 6.55311Z"
+                              fill="#161326"
+                            />
+                          </svg>
+                          Bit Coin
+                        </a>
+                        <a class="tf-button style-4 f12-bold">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
+                              fill="#161326"
+                            />
+                            <path
+                              d="M4.60004 9.93317L7.78669 11.3465C7.92669 11.4065 8.08671 11.4065 8.22004 11.3465L11.4067 9.93317C11.6867 9.80651 11.9467 10.1465 11.7534 10.3865L8.42003 14.4598C8.19336 14.7398 7.82004 14.7398 7.59337 14.4598L4.26004 10.3865C4.06004 10.1465 4.31338 9.80651 4.60004 9.93317Z"
+                              fill="#161326"
+                            />
+                            <path
+                              d="M7.85338 6.3265L5.10004 7.69984C4.85337 7.81984 4.85337 8.17317 5.10004 8.29317L7.85338 9.6665C7.94671 9.71317 8.06001 9.71317 8.15334 9.6665L10.9067 8.29317C11.1533 8.17317 11.1533 7.81984 10.9067 7.69984L8.15334 6.3265C8.05334 6.27984 7.94671 6.27984 7.85338 6.3265Z"
+                              fill="#161326"
+                            />
+                          </svg>
+                          Ethereum
+                        </a>
+                        <a class="tf-button style-4 f12-bold">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M4.74695 2.3335H10.667C13.3336 2.3335 14.667 4.00016 14.667 6.3335V8.00016C14.667 11.3335 12.667 13.6668 9.00029 13.6668H2.62695L3.33362 10.8335H8.29362C10.667 10.8335 11.8336 9.3335 11.8336 7.2935V7.16683C11.8336 6.00016 11.3336 5.16683 9.83362 5.16683H4.04029L4.74695 2.3335Z"
+                              fill="#161326"
+                            />
+                            <path
+                              d="M8.27334 6.81982H3.13334C2.41334 6.81982 1.78667 7.31316 1.60667 8.00649L1.44 8.68649C1.38 8.93316 1.56667 9.17316 1.82 9.17316H6.96C7.68 9.17316 8.30667 8.67982 8.48667 7.98649L8.65334 7.3065C8.72 7.05983 8.52667 6.81982 8.27334 6.81982Z"
+                              fill="#161326"
+                            />
+                          </svg>
+                          Usdt
+                        </a>
+                        <a class="tf-button style-4 f12-bold">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10.0003 1.6665C5.40032 1.6665 1.66699 5.39984 1.66699 9.99984C1.66699 14.5998 5.40032 18.3332 10.0003 18.3332C14.6003 18.3332 18.3337 14.5998 18.3337 9.99984C18.3337 5.39984 14.6003 1.6665 10.0003 1.6665ZM13.1837 13.5998C13.1087 13.9998 12.767 14.2832 12.367 14.2832H7.75031C7.20031 14.2832 6.80032 13.7498 6.95032 13.2248L7.65032 10.7665L6.22533 11.0498C6.18366 11.0582 6.142 11.0582 6.10033 11.0582C5.80866 11.0582 5.55032 10.8498 5.49199 10.5582C5.42532 10.2165 5.64199 9.8915 5.98365 9.82484L8.04199 9.41651L9.13365 5.60817C9.18365 5.43317 9.35033 5.30817 9.53366 5.30817H10.667C11.217 5.30817 11.617 5.82483 11.4753 6.35817L10.8003 8.8665L12.4087 8.5415C12.742 8.47484 13.0753 8.6915 13.142 9.03317C13.2086 9.37483 12.992 9.69984 12.6503 9.7665L10.4336 10.2082L9.97533 11.9165H12.5003C13.017 11.9165 13.4087 12.3832 13.317 12.8998L13.1837 13.5998Z"
+                              fill="#161326"
+                            />
+                          </svg>
+                          Lite Coin
+                        </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <div
+                          class="wg-box gap12 style-1 bg-Primary shadow-none mb-32 coin-chart-wrap"
+                        >
+                          <div class="title">
+                            <div class="label-01 text-White">Coin chart</div>
+                          </div>
+                          <div
+                            class="flex justify-between flex-wrap items-center gap16 market-trend"
+                          >
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                              <div
+                                class="tradingview-widget-container__widget"
+                              ></div>
+                              <script
+                                type="text/javascript"
+                                src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"
+                                async
+                              >
+                                  {
+                                  "width": "100%",
+                                  "height": "100%",
+                                  "defaultColumn": "overview",
+                                  "screener_type": "crypto_mkt",
+                                  "displayCurrency": "USD",
+                                  "colorTheme": "dark",
+                                  "locale": "en",
+                                  "isTransparent": true
+                                }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END -->
+                          </div>
+                          <div
+                            id="candlestick-3"
+                            class="candlestick-chart"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div
+                          class="wg-box style-1 gap20 bg-Gainsboro shadow-none mb-24 box-about"
+                        >
+                          <div class="title">
+                            <div class="label-01">About</div>
+                          </div>
+                          <div class="about-wrap">
+                            <div class="icon text-center">
+                              <svg
+                                width="64"
+                                height="64"
+                                viewBox="0 0 64 64"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <rect
+                                  width="64"
+                                  height="64"
+                                  rx="20"
+                                  fill="#161326"
+                                />
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M41.1641 29.3126C41.5958 26.4308 39.4001 24.8812 36.4 23.8473L37.3734 19.9424L34.9975 19.3512L34.0488 23.1529C33.4376 22.9994 32.8105 22.8565 32.1844 22.7138L32.1844 22.7138L32.1445 22.7047L33.1001 18.8782L30.7242 18.2856L29.7508 22.1891L29.6469 22.1653C29.1656 22.0553 28.6921 21.947 28.2329 21.8316L28.2356 21.8192L24.9578 21.0011L24.3253 23.5393C24.3253 23.5393 26.0893 23.9435 26.0522 23.9682C27.0147 24.2089 27.1879 24.8455 27.159 25.3514L26.0508 29.7993C26.1168 29.8158 26.2021 29.8406 26.2983 29.8777L26.0467 29.8158L24.493 36.0471C24.3748 36.3385 24.0764 36.7771 23.4027 36.6108C23.4275 36.6451 21.6758 36.1804 21.6758 36.1804L20.4961 38.9L23.5897 39.6714C23.9219 39.7548 24.2505 39.8406 24.5756 39.9254L24.5757 39.9255C24.813 39.9874 25.0485 40.0489 25.2822 40.1086L24.2992 44.0574L26.6737 44.6486L27.6471 40.7438C28.2961 40.9184 28.9258 41.0807 29.5418 41.2347L28.5711 45.123L30.947 45.7142L31.93 41.7737C35.9834 42.5409 39.0302 42.2315 40.313 38.5659C41.347 35.6153 40.2622 33.9118 38.1296 32.8022C39.6833 32.4447 40.852 31.4231 41.1641 29.3126ZM35.7331 36.927C35.0609 39.635 30.8226 38.5155 28.8826 38.0031C28.7078 37.9569 28.5517 37.9157 28.4185 37.8826L29.7247 32.651C29.8871 32.6916 30.0857 32.7362 30.3107 32.7867C32.3173 33.2375 36.4242 34.1601 35.7331 36.927ZM30.7136 30.3582C32.3302 30.7898 35.8551 31.7309 36.4687 29.27C37.0964 26.753 33.6698 25.995 31.9961 25.6247C31.8074 25.583 31.641 25.5461 31.5052 25.5123L30.3228 30.2558C30.4348 30.2837 30.5663 30.3189 30.7136 30.3582Z"
+                                  fill="white"
+                                />
+                              </svg>
+                            </div>
+                            <div class="head label-01 text-center">
+                              Digital Cash
+                            </div>
+                            <div
+                              class="sub f12-medium text-center text-GrayDark"
+                            >
+                              Bitcoin
+                            </div>
+                            <div class="number-exchange f12-medium text-center">
+                              1 BITCOIN = 43,474.50 USD
+                            </div>
+                            <div class="desc f12-medium text-GrayDark">
+                              Bitcoin, a pioneering cryptocurrency, exists
+                              purely in the digital space, enabling
+                              decentralized and secure peer-to-peer transactions
+                              without traditional intermediaries. Its value
+                              fluctuates based on supply, demand, and market
+                              sentiment within the digital economy.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <div class="wg-box mb-32 gap16 bg-YellowGreen">
+                          <div>
+                            <div class="title">
+                              <div class="label-01">Market Trade Stat</div>
+                            </div>
+                          </div>
+                          <div class="market-trend">
+                            <!-- TradingView Widget BEGIN -->
+                            <div
+                              class="tradingview-widget-container"
+                              style="height: 100%; width: 100%"
+                            >
+                              <div
+                                class="tradingview-widget-container__widget"
+                                style="height: calc(100% - 32px); width: 100%"
+                              ></div>
+                              <script
+                                type="text/javascript"
+                                src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                                async
+                              >
+                                  {
+                                  "autosize": true,
+                                  "symbol": "BINANCE:SOLUSDT",
+                                  "interval": "1",
+                                  "timezone": "exchange",
+                                  "theme": "light",
+                                  "style": "1",
+                                  "locale": "en",
+                                  "backgroundColor": "rgba(180, 250, 100, 1)",
+                                  "allow_symbol_change": true,
+                                  "compareSymbols": [
+                                    {
+                                      "symbol": "CRYPTOCAP:BTC",
+                                      "position": "SameScale"
+                                    }
+                                  ],
+                                  "support_host": "https://www.tradingview.com"
+                                }
+                              </script>
+                            </div>
+                            <!-- TradingView Widget END -->
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="price-change-upgrade">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                  <div
+                                    class="tradingview-widget-container__widget"
+                                  ></div>
+                                  <script
+                                    type="text/javascript"
+                                    src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                                    async
+                                  >
+                                      {
+                                      "symbol": "CRYPTOCAP:BTC",
+                                      "width": "100%",
+                                      "height": "100%",
+                                      "locale": "en",
+                                      "dateRange": "ALL",
+                                      "colorTheme": "light",
+                                      "isTransparent": true,
+                                      "autosize": true,
+                                      "largeChartUrl": "",
+                                      "chartOnly": false,
+                                      "noTimeScale": true
+                                    }
+                                  </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="price-change-downgrade">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                  <div
+                                    class="tradingview-widget-container__widget"
+                                  ></div>
+                                  <script
+                                    type="text/javascript"
+                                    src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                                    async
+                                  >
+                                      {
+                                      "symbol": "BINANCE:SOLUSDT",
+                                      "width": "100%",
+                                      "height": "100%",
+                                      "locale": "en",
+                                      "dateRange": "ALL",
+                                      "colorTheme": "light",
+                                      "isTransparent": true,
+                                      "autosize": true,
+                                      "largeChartUrl": "",
+                                      "chartOnly": false,
+                                      "noTimeScale": true
+                                    }
+                                  </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                              </div>
+                            </div>
+                          </div>
+                          <button
+                            class="tf-button btn-profit style-1 f12-bold w-100 cursor-pointer"
+                            id="profit-btn"
+                            disabled
+                            style="cursor: not-allowed;"
+                          >
+                            Take Profit
+                            <i class="icon icon-send"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="wg-box box-quick-trade mb-32">
+                          <div class="title">
+                            <div>
+                              <div class="label-01 mb-2 text-center">
+                                Trading Room
+                              </div>
+                              <div class="f12-medium text-GrayDark">
+                                Place a Trade here with the available market
+                                stat selecting an asset.
+                              </div>
+                              <div class="f12-medium text-GrayDark">
+                                NOTE: All trade are performed in 5minutes and
+                                balance are transferred to USD
+                              </div>
+                            </div>
+                          </div>
+                          <div class="quick-trade-wrap">
+                            <div class="quick-trade-list">
+                              <div class="relative">
+                                <div class="f12-medium text-Primary title">
+                                  Amount USD
+                                </div>
+                                <input
+                                  type="number"
+                                  placeholder="$10"
+                                  class="quick-trade-input style-1"
+                                  aria-required="true"
+                                  id="trade-price"
+                                  required
+                                />
+                              </div>
+                              <div class="relative">
+                                <div class="f12-medium text-Primary title">
+                                  Select Currency
+                                </div>
+                                <select
+                                  name="select-currency"
+                                  id="select-currency"
+                                  class="quick-trade-input style-1"
+                                >
+                                  <option value="" disabled selected>
+                                    Select Currency
+                                  </option>
+                                  <option value="BTC">BTC</option>
+                                  <option value="SOL">SOL</option>
+                                  <option value="ETH">ETH</option>
+                                  <option value="USDT">USDT</option>
+                                </select>
+                              </div>
+                              <div class="relative">
+                                <div class="f12-medium text-Primary title">
+                                  Ratio Profit
+                                </div>
+                                <input
+                                  type="number"
+                                  placeholder="0.1"
+                                  class="quick-trade-input style-1"
+                                  aria-required="true"
+                                  id="stake-price"
+                                  required
+                                />
+                              </div>
+                              <div class="relative">
+                                <div class="f12-medium text-Primary title">
+                                  Fee (10%)
+                                </div>
+                                <input
+                                  type="text"
+                                  placeholder=""
+                                  class="quick-trade-input style-1"
+                                  value="10"
+                                  aria-required="true"
+                                  id="trade-fee"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div class="relative t-margin">
+                              <div class="m-level">
+                                <div class="f12-medium text-secondary title">
+                                  Entry Price (USD)
+                                </div>
+                                <div class="e-price" id="entry-price">
+                                  $0.00
+                                </div>
+                              </div>
+                              <div class="m-level">
+                                <div class="f12-medium text-level title">
+                                  Margin Price (USD)
+                                </div>
+                                <div class="m-price" id="margin-price">
+                                  $0.00
+                                </div>
+                              </div>
+                            </div>
+                            <div class="relative time-stamp">
+                              <div class="tt">
+                                <i class="fas fa-clock"></i>
+                                <span id="time-stamp">00:00</span>
+                              </div>
+                            </div>
+                            <div class="bottom-button btn-t">
+                              <button
+                                class="btn-buy f12-bold w-100 cursor-pointer"
+                                id="place-trade"
+                              >
+                                Place Trade
+                                <i class="icon icon-send"></i>
+                              </button>
+                            </div>
+                            <div class="tf-cart-checkbox style-3">
+                              <div class="tf-checkbox-wrapp">
+                                <input
+                                  class="checkbox-item"
+                                  type="checkbox"
+                                  name="transaction_checkbox"
+                                  id="checked-term"
+                                  checked
+                                />
+                                <div>
+                                  <i class="icon-check"></i>
+                                </div>
+                              </div>
+                              <div class="f12-medium text-GrayDark">
+                                I have read and agree to
+                                <a href="../privacy.html">Terms & Conditions</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /main-content-wrap -->
+              </div>
+              <!-- /main-content-wrap -->
+            </div>
+            <!-- /main-content -->
+          </div>
+          <!-- /section-content-right -->
+        </div>
+        <!-- /layout-wrap -->
+      </div>
+      <!-- /#page -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Javascript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/countto.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/apexcharts/apexcharts.js"></script>
+    <script src="js/apexcharts/small-chart-1.js"></script>
+    <script src="js/apexcharts/small-chart-2.js"></script>
+    <script src="js/apexcharts/small-chart-3.js"></script>
+    <script src="js/apexcharts/small-chart-4.js"></script>
+    <script src="js/apexcharts/line-chart-twoline.js"></script>
+    <script src="js/apexcharts/candlestick-1.js"></script>
+    <script src="js/apexcharts/candlestick-4.js"></script>
+    <script src="js/apexcharts/candlestick-5.js"></script>
+    <script src="js/switcher.js"></script>
+    <script defer src="js/theme-settings.js"></script>
+    <!-- Animation Icon -->
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <!-- CDN JS SCRIPT -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+      integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/brands.min.js"
+      integrity="sha512-ILOQokRQNF0S8SKV6fnaLNj02CmZnDWmYUr3zlH4jwToep0lWc7twuTzF+Mm0cKPdszi0xe8KymVi2y7mAweVQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Theme Js -->
+    <script src="js/main.js"></script>
+    <!-- Home JAVASCRIPT -->
+    <script src="../assets/vendor/counter/waypoints-min.js"></script>
+    <!-- WAYPOINTS JS -->
+    <script src="../assets/vendor/counter/counterup.min.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="../assets/js/custom.js"></script>
+
+    <!-- Controller Js -->
+    <script type="module" src="b-js/controller.js"></script>
+    <!-- USER  AUTHENTICATION -->
+    <script type="module" src="./b-Js/trascation.js"></script>
+
+    <script type="module" src="./b-Js/signout.js"></script>
+  </body>
+</html>

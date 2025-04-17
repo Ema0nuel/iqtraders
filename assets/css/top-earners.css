@@ -1,0 +1,29 @@
+#text-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 5px;
+  color: #15803d; /* Tailwind's green-800 */
+  padding: 1rem;
+  border-radius: 0.375rem; /* Tailwind's rounded-md */
+  z-index: 10;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+#text-popup.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#text-popup.hide {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.popup-content {
+  line-height: 1px;
+}
+.popup-content p {
+  font-size: 12px;
+}
