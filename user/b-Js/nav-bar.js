@@ -144,3 +144,5 @@ export function RightNavbar() {
     `;
   return html;
 }
+
+console.log("H");
