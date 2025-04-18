@@ -1,4 +1,4 @@
-export function navbar() {
+ function navbar() {
   let html;
   html = `
         <div class="box-logo">
@@ -88,7 +88,7 @@ export function navbar() {
   return html;
 }
 
-export function RightNavbar() {
+ function RightNavbar() {
   let html = `
         <div class="header-left">
                   <div class="button-show-hide">
@@ -145,4 +145,14 @@ export function RightNavbar() {
   return html;
 }
 
-console.log("H");
+const logUser = localStorage.getItem("logId")
+const jsNavbar = document.getElementById("js-navbar");
+const rightNavbar = document.getElementById("js-right-navbar");
+
+if(logUser === null) {
+    window.location.href = "../page-register.html"
+}
+
+
+jsNavbar.innerHTML = navbar();
+rightNavbar.innerHTML = RightNavbar()
