@@ -439,7 +439,7 @@ withdrawBtn.addEventListener("click", () => {
           <path d="M26 39.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
       </svg>
       <div class="text-wrapper text-center">
-          <p>Withdrawal would activate after 48hours!</p>
+          <p>Withdrawal not activated!</p>
           <p>Contact our support team at 
             <p class="text admin-icon">
               <a
