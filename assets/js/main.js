@@ -6,6 +6,10 @@ const signinPIcon = document.getElementById("signin-p-icon");
 const signupPIcon = document.getElementById("signup-p-icon");
 const signinPassword = document.getElementById("signin-password");
 const signupPassword = document.getElementById("signup-password");
+const confirmSignUpPassword = document.getElementById(
+  "confirm-signup-password"
+);
+const confirmSignupPIcon = document.getElementById("confirm-signup-p-icon");
 
 signupLink.addEventListener("click", () => {
   signinDiv.classList.add("hidden");
@@ -36,6 +40,17 @@ signupPIcon.addEventListener("click", () => {
   } else {
     signupPIcon.innerHTML = `<i class="fa-solid fa-eye"></i>`;
     signupPassword.setAttribute("type", "password");
+    a = 0;
+  }
+});
+confirmSignupPIcon.addEventListener("click", () => {
+  if (a === 0) {
+    confirmSignUpPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+    confirmSignUpPassword.setAttribute("type", "text");
+    a = 1;
+  } else {
+    confirmSignupPIcon.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+    confirmSignUpPassword.setAttribute("type", "password");
     a = 0;
   }
 });

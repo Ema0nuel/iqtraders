@@ -130,11 +130,6 @@
 .DZ-theme-btn.DZ-bt-buy-now {
   display: none;
 }
-@media (min-width: 1115px) {
-  .p-icon{
-    bottom: 7.5em;
-  }
-}
 
 /* POP UP DIV CONFIGURATION */
 #confirmation-popup {
@@ -389,7 +384,7 @@
   }
 }
 @media (max-width: 768px) {
-  .animation-container-p{
+  .animation-container-p {
     width: 80%;
   }
   #copy-item {
@@ -420,8 +415,8 @@
     opacity: 0.8;
   }
   90% {
-      stroke-dashoffset: 20;
-      opacity: 1;
+    stroke-dashoffset: 20;
+    opacity: 1;
   }
   100% {
     stroke-dashoffset: 0;
@@ -471,25 +466,29 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.f-thick{
+.f-thick {
   font-size: 1.2em;
 }
-.f-xxl{
+.f-xxl {
   font-size: 2.5em;
   font-weight: 800;
 }
-.icon-media img{
+.icon-media img {
   border-radius: 50%;
 }
 
-.deposit-div{
+.deposit-div {
   padding: 20px 10px;
 }
-.deposit-w{
+.deposit-w {
   width: 100%;
 }
 .deposit-form-header {
@@ -499,7 +498,7 @@
   padding: 10px 0;
   text-align: center;
 }
-.deposit-input{
+.deposit-input {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -510,14 +509,14 @@
   padding: 3px;
   margin-bottom: 0.6em;
 }
-.deposit-input label{
+.deposit-input label {
   width: 100%;
   font-weight: 600;
   padding-left: 3px;
   color: #a3a3a3;
   font-size: 14px;
 }
-.deposit-input input{
+.deposit-input input {
   width: 100%;
   font-family: "Inter";
   padding: 13px 10px;
@@ -525,25 +524,25 @@
   outline: 1px solid #d1d1d1;
   font-size: 13px;
 }
-.deposit-input select{
+.deposit-input select {
   outline: 1px solid #d1d1d1;
   color: #a3a3a3;
 }
-#copy-item{
+#copy-item {
   position: absolute;
   right: 15px;
   bottom: 3px;
   cursor: pointer;
   color: #a3a3a3;
 }
-.form-btn{
+.form-btn {
   margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.form-btn button{
+.form-btn button {
   width: 100%;
   margin: auto;
   display: flex;
@@ -551,10 +550,10 @@
   gap: 6px;
 }
 
-.pt-short{
+.pt-short {
   padding-top: 0;
 }
-.cancel-sign-btn{
+.cancel-sign-btn {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -567,13 +566,13 @@
   cursor: pointer;
   color: #ff0000;
 }
-.t-margin{
+.t-margin {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.text-level{
+.text-level {
   color: blueviolet;
 }
 .e-price,
@@ -585,37 +584,37 @@
   border-radius: 6px;
   font-weight: 600;
 }
-.m-price{
+.m-price {
   color: rgb(1, 1, 1);
 }
-.time-stamp{
+.time-stamp {
   margin-top: 10px;
   border: 1px solid #d1d1d1;
   border-radius: 7px;
   text-align: center;
   padding: 4px;
 }
-.time-stamp .tt{
+.time-stamp .tt {
   background: #f0f0f0;
   padding: 15px 0;
   border-radius: 3.5px;
   font-weight: 600;
 }
-.tt i{
+.tt i {
   color: #d1d1d1;
 }
-.btn-t{
+.btn-t {
   margin-top: 80px;
 }
-.validate-text{
+.validate-text {
   width: 100%;
   font-size: 12px;
   text-align: center;
 }
-.border-tt{
+.border-tt {
   border: 1px solid #d1d1d1;
 }
-.btn-google{
+.btn-google {
   width: 100%;
   box-shadow: 1px 0.3px 10px 1px #dadada;
   border-radius: 30px;
@@ -627,6 +626,20 @@
   color: #fff;
   background: #0654f0;
 }
-.btn-google:hover{
+.btn-google:hover {
   color: #fff;
+}
+.add-ttt {
+  position: absolute;
+  bottom: 14.6em;
+  right: 20px;
+  padding: 10px 0;
+}
+@media (min-width: 1115px) {
+  .p-icon {
+    bottom: 7.5em;
+  }
+  .add-ttt {
+    bottom: 13.5em;
+  }
 }

@@ -54,6 +54,7 @@ const popMessage = document.getElementById("confirmation-popup");
 const signInBtn = document.getElementById("signin-log");
 const signInEmail = document.getElementById("signin-email");
 const signInPassword = document.getElementById("signin-password");
+const confirmSignUpPassword = document.getElementById("confirm-signup-password");
 
 signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -82,6 +83,25 @@ signupBtn.addEventListener("click", (e) => {
             </svg>
             <div class="text-wrapper">
                 <p>Fill out Parameters!</p>
+            </div>
+        </div>
+        </div>
+        `;
+
+    setTimeout(() => {
+      popMessage.innerHTML = "";
+      popMessage.style.display = "none";
+    }, 3500);
+  } else if (signUpPassword.value !== confirmSignUpPassword.value) {
+    popMessage.style.display = "flex";
+    popMessage.innerHTML = `
+        <div class="animation-container-p">
+        <div class="x-mark-wrapper">
+            <svg class="x-mark" viewBox="0 0 52 52">
+                <path d="M16 16 36 36M36 16 16 36" />
+            </svg>
+            <div class="text-wrapper">
+                <p>Password not matching!</p>
             </div>
         </div>
         </div>

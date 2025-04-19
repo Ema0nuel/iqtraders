@@ -1,41 +1,233 @@
-const textPopup = document.getElementById('text-popup');
-        const popupText = document.getElementById('popup-text');
-        const messages = [
-            "Derick from SCOTLAND received $2K",
-            "James from WALES received $5K",
-            "Maverick from US received $10K",
-            "Norma from LONDON received $30K",
-            "Morris from CHICAGO received $1K",
-            "Payne from VENICE received $3K",
-            "Vicki from MADRID received $500",
-            "Thompson from QUEENS received $800",
-            "Caroline from UKRAINE received $16K",
-        ];
+const textPopup = document.getElementById("text-popup");
+const popupText = document.getElementById("popup-text");
+const messages = [
+  "Zane from WALES received $15K",
+  "Hannah from THAILAND received $1K",
+  "Zane from QATAR received $30K",
+  "Fiona from SWEDEN received $25K",
+  "Sophia from SWEDEN received $25K",
+  "Riley from YEMEN received $30K",
+  "Uma from GERMANY received $15K",
+  "Sophia from XINJIANG received $500",
+  "Nina from ZIMBABWE received $800",
+  "Riley from CALIFORNIA received $1K",
+  "Victor from KENYA received $10K",
+  "Paige from DUBAI received $15K",
+  "Julia from DUBAI received $5K",
+  "Miles from BRAZIL received $5K",
+  "Luna from AUSTRALIA received $1K",
+  "Hannah from NYC received $2K",
+  "Kai from QATAR received $10K",
+  "Tyler from NYC received $2K",
+  "Uma from JAPAN received $1K",
+  "Julia from ZIMBABWE received $10K",
+  "Paige from AUSTRALIA received $25K",
+  "Gavin from QATAR received $5K",
+  "Bella from MEXICO received $2K",
+  "Tyler from CALIFORNIA received $20K",
+  "Caleb from TEXAS received $10K",
+  "Victor from CANADA received $1K",
+  "Kai from SINGAPORE received $25K",
+  "Luna from SPAIN received $1K",
+  "Nina from CALIFORNIA received $3K",
+  "Xander from BRAZIL received $15K",
+  "Hannah from PERU received $20K",
+  "Yama from GERMANY received $25K",
+  "Riley from SPAIN received $1K",
+  "Julia from PERU received $2K",
+  "Aden from KENYA received $5K",
+  "Miles from WALES received $25K",
+  "Zane from NYC received $5K",
+  "Uma from KENYA received $800",
+  "Quinn from SPAIN received $5K",
+  "Ethan from CALIFORNIA received $500",
+  "Riley from PERU received $2K",
+  "Caleb from VENEZUELA received $1K",
+  "Diana from NORWAY received $5K",
+  "Xander from XINJIANG received $2K",
+  "Cara from INDIA received $30K",
+  "Willow from RUSSIA received $25K",
+  "Victor from VENEZUELA received $2K",
+  "Uma from DUBAI received $25K",
+  "Ian from QATAR received $5K",
+  "Kai from MEXICO received $2K",
+  "Miles from AUSTRALIA received $15K",
+  "Gavin from SINGAPORE received $500",
+  "Nina from DUBAI received $30K",
+  "Quinn from CALIFORNIA received $5K",
+  "Bella from AUSTRALIA received $30K",
+  "Tyler from NYC received $10K",
+  "Willow from GERMANY received $1K",
+  "Ian from QATAR received $3K",
+  "Miles from TEXAS received $3K",
+  "Nina from SWEDEN received $15K",
+  "Kai from INDIA received $5K",
+  "Hannah from NYC received $20K",
+  "Aides from RUSSIA received $3K",
+  "Xander from JAPAN received $25K",
+  "Diana from CALIFORNIA received $25K",
+  "Caleb from GERMANY received $5K",
+  "Willow from UK received $15K",
+  "Ethan from XINJIANG received $2K",
+  "Uma from JAPAN received $1K",
+  "Victor from KENYA received $2K",
+  "Julia from SPAIN received $25K",
+  "Luna from INDIA received $25K",
+  "Kai from BRAZIL received $25K",
+  "Sophia from NYC received $20K",
+  "Fiona from SINGAPORE received $25K",
+  "Paige from INDIA received $2K",
+  "Riley from DUBAI received $15K",
+  "Yaren from WALES received $2K",
+  "Zane from NYC received $15K",
+  "Sophia from QATAR received $25K",
+  "Golden from NYC received $10K",
+  "Therry from SWEDEN received $3K",
+  "Tyler from JAPAN received $2K",
+  "Paige from SINGAPORE received $25K",
+  "Miles from KENYA received $10K",
+  "Ian from ZIMBABWE received $3K",
+  "Nina from VENEZUELA received $25K",
+  "Jerry from WALES received $15K",
+  "Caleb from QATAR received $2K",
+  "Aiken from DUBAI received $10K",
+  "Hannah from PERU received $15K",
+  "Luna from NYC received $15K",
+  "Quinn from KENYA received $500",
+  "Xander from GERMANY received $2K",
+  "Owen from MEXICO received $25K",
+  "Zane from INDIA received $15K",
+  "Gavin from NYC received $25K",
+  "Ian from PERU received $3K",
+  "Yare from NYC received $3K",
+  "Victor from KENYA received $15K",
+  "Diana from NORWAY received $2K",
+  "Willow from JAPAN received $30K",
+  "Bella from TEXAS received $3K",
+  "Aeliana from ITALY received $12.5K",
+  "Lysander from GREECE received $28K",
+  "Seraphina from FRANCE received $19.5K",
+  "Kaelen from CANADA received $7.5K",
+  "Evanthe from AUSTRALIA received $33K",
+  "Rhysand from IRELAND received $11K",
+  "Isolde from GERMANY received $22K",
+  "Caspian from RUSSIA received $16K",
+  "Zephyra from SPAIN received $9K",
+  "Kianu from HAWAII received $37K",
+  "Elara from NORWAY received $14K",
+  "Torvin from SWEDEN received $26.5K",
+  "Jaxon from USA received $31K",
+  "Solara from BRAZIL received $17.5K",
+  "Breccan from SCOTLAND received $10.5K",
+  "Leona from MEXICO received $23.5K",
+  "Finnian from FINLAND received $15.5K",
+  "Wrenna from ENGLAND received $29K",
+  "Alaric from HUNGARY received $6.5K",
+  "Sylvie from BELGIUM received $20.5K",
+  "Ronan from ARGENTINA received $13K",
+  "Lyra from AUSTRIA received $25K",
+  "Jasper from DENMARK received $18K",
+  "Nova from CHILE received $9.5K",
+  "Corbin from SWITZERLAND received $34K",
+  "Emberly from ICELAND received $12K",
+  "Stellan from ESTONIA received $27K",
+  "Kael from WALES received $32K",
+  "Asteria from POLAND received $19K",
+  "Bram from NETHERLANDS received $10K",
+  "Oriana from PORTUGAL received $24K",
+  "Lucian from ROMANIA received $15K",
+  "Willowyn from NEW ZEALAND received $30K",
+  "Maddox from CANADA received $7K",
+  "Seraphine from ITALY received $21K",
+  "Evander from GREECE received $14.5K",
+  "Juniper from USA received $28.5K",
+  "Theron from SOUTH AFRICA received $6K",
+  "Elodie from FRANCE received $17K",
+  "Cassian from IRELAND received $22.5K",
+  "Avalon from ENGLAND received $11.5K",
+  "Sterling from SCOTLAND received $25.5K",
+  "Wren from WALES received $16.5K",
+  "Kyler from AUSTRALIA received $30.5K",
+  "Briar from IRELAND received $9K",
+  "Jaceon from USA received $33.5K",
+  "Larkyn from CANADA received $13.5K",
+  "Alistair from SCOTLAND received $27.5K",
+  "Oceana from SPAIN received $18.5K",
+  "Paxton from USA received $10.5K",
+  "Soleil from FRANCE received $24.5K",
+  "Kaelan from IRELAND received $15.5K",
+  "Everly from ENGLAND received $29.5K",
+  "Rhys from WALES received $7.5K",
+  "Isolabella from ITALY received $21.5K",
+  "Caius from GREECE received $14K",
+  "Zephyrine from FRANCE received $28K",
+  "Kian from HAWAII received $6.5K",
+  "Elarae from NORWAY received $17.5K",
+  "Torren from SWEDEN received $23K",
+  "Amarissa from INDIA received $12.5K",
+  "Jax from USA received $26K",
+  "Solarian from BRAZIL received $19K",
+  "Brekyn from SCOTLAND received $10K",
+  "Leonora from MEXICO received $24K",
+  "Finn from FINLAND received $15K",
+  "Wrenley from ENGLAND received $29K",
+  "Alarick from HUNGARY received $7K",
+  "Sylvana from BELGIUM received $20K",
+  "Roan from ARGENTINA received $13K",
+  "Lyrian from AUSTRIA received $25K",
+  "Jaspian from DENMARK received $18K",
+  "Novalie from CHILE received $9.5K",
+  "Corban from SWITZERLAND received $34.5K",
+  "Emberlyn from ICELAND received $12K",
+  "Stellian from ESTONIA received $27.5K",
+  "Indie from JAMAICA received $8.5K",
+  "Kaien from WALES received $32.5K",
+  "Aster from POLAND received $19.5K",
+  "Bran from NETHERLANDS received $10.5K",
+  "Orian from PORTUGAL received $24.5K",
+  "Lucius from ROMANIA received $15.5K",
+  "Willowy from NEW ZEALAND received $30.5K",
+  "Madox from CANADA received $7.5K",
+  "Seraphia from ITALY received $21.5K",
+  "Evan from GREECE received $14.5K",
+  "Juneau from USA received $28.5K",
+  "Theo from SOUTH AFRICA received $6.5K",
+  "Elodiea from FRANCE received $17.5K",
+  "Cassianna from IRELAND received $23K",
+  "Avalyn from ENGLAND received $12K",
+  "Sterlington from SCOTLAND received $26K",
+  "Wrenlee from WALES received $17K",
+  "Kylian from AUSTRALIA received $31K",
+  "Briallen from IRELAND received $9.5K",
+  "Jaxonlee from USA received $34K",
+  "Lark from CANADA received $14K",
+  "Alaricton from SCOTLAND received $28K",
+];
 
-        function showPopup() {
-            textPopup.classList.remove('hide');
-            textPopup.classList.add('show');
-        }
+function showPopup() {
+  textPopup.classList.remove("hide");
+  textPopup.classList.add("show");
+}
 
-        function hidePopup() {
-            textPopup.classList.remove('show');
-            textPopup.classList.add('hide');
-        }
+function hidePopup() {
+  textPopup.classList.remove("show");
+  textPopup.classList.add("hide");
+}
 
-        function updateText() {
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            popupText.textContent = messages[randomIndex];
-        }
+function updateText() {
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  popupText.textContent = messages[randomIndex];
+}
 
-        // Initial call
-        updateText();
-        showPopup();
+// Initial call
+updateText();
+showPopup();
 
-        // Update the text and show the popup every 10 seconds
-        setInterval(() => {
-            hidePopup();
-            setTimeout(() => {
-                updateText();
-                showPopup();
-            }, 300); // Small delay before showing the popup again
-        }, 10000);
+// Update the text and show the popup every 10 seconds
+setInterval(() => {
+  hidePopup();
+  setTimeout(() => {
+    updateText();
+    showPopup();
+  }, 300); // Small delay before showing the popup again
+}, 10000);
