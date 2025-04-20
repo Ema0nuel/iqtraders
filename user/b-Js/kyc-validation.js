@@ -26,7 +26,6 @@ const firebaseConfig = {
   measurementId: "G-J7LYXPLFWF",
 };
 
-
 const logUser = localStorage.getItem("logId");
 let successIcon = `<dotlottie-player
   src="https://lottie.host/16dbd64b-ed86-44e4-9084-d3bcf3aa5c1c/VoqLrrvykV.lottie"
@@ -63,8 +62,6 @@ const residentialValidationInput = document.getElementById(
 );
 const investingCurrencySelect = document.getElementById("investingCurrency");
 const pictureInput = document.getElementById("picture");
-const termsAndConditionsCheckbox =
-  document.getElementById("termsAndConditions");
 const walletAddressIdInput = document.getElementById("walletAddressId");
 
 onAuthStateChanged(auth, (user) => {
@@ -74,11 +71,52 @@ onAuthStateChanged(auth, (user) => {
     getDoc(docRef)
       .then((docSnap) => {
         const userData = docSnap.data();
-        inputValidation(userData);
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          updateData(docRef);
-        });
+        if (userData.KYC === 1) {
+          window.location.href = "./index.html";
+        } else {
+          inputValidation(userData);
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (
+              firstNameInput.value === "" ||
+              lastNameInput.value === "" ||
+              emailInput.value === "" ||
+              phoneInput.value === "" ||
+              dateOfBirthInput.value === "" ||
+              regionInput.value === "" ||
+              nationalityInput.value === "" ||
+              addressInput.value === "" ||
+              validIdInput.value ||
+              validIdTypeSelect.value === "" ||
+              residentialValidationInput.value === "" ||
+              residentialValidationTypeSelect.value === "" ||
+              investingCurrencySelect.value === "" ||
+              genderSelect.value === "" ||
+              walletAddressIdInput.value === ""
+            ) {
+              popMessage.style.display = "flex";
+              popMessage.innerHTML = `
+        <div class="animation-container-p">
+        <div class="x-mark-wrapper">
+            <svg class="x-mark" viewBox="0 0 52 52">
+                <path d="M16 16 36 36M36 16 16 36" />
+            </svg>
+            <div class="text-wrapper">
+                <p>Fill out Parameters!</p>
+            </div>
+        </div>
+        </div>
+        `;
+
+              setTimeout(() => {
+                popMessage.innerHTML = "";
+                popMessage.style.display = "none";
+              }, 3500);
+            } else {
+              updateData(docRef);
+            }
+          });
+        }
       })
       .catch((error) => console.error(error));
   }
@@ -95,9 +133,9 @@ function inputValidation(userData) {
     walletAddressIdInput.value = userData.depositWallet;
   }
 
-  firstNameInput.disabled = "true";
-  lastNameInput.disabled = "true";
-  emailInput.disabled = "true";
+  firstNameInput.disabled = true;
+  lastNameInput.disabled = true;
+  emailInput.disabled = true;
 }
 
 function updateData(docRef) {
@@ -131,7 +169,10 @@ function updateData(docRef) {
     };
 
     updateDoc(docRef, updateData);
-    kycValid("Thank for Submitting your KYC Verifications", "It's under review in 48 Hours")
+    kycValid(
+      "Thank for Submitting your KYC Verifications",
+      "It's under review in 48 Hours"
+    );
   };
 
   reader.onerror = () => {
@@ -140,9 +181,9 @@ function updateData(docRef) {
   };
   reader.readAsDataURL(file);
 }
-function kycValid(message1,message2) {
-    popMessage.style.display = "flex";
-    popMessage.innerHTML = `
+function kycValid(message1, message2) {
+  popMessage.style.display = "flex";
+  popMessage.innerHTML = `
           <div class="animation-container-p">
           <div class="checkmark-wrapper-p">
           ${successIcon}
@@ -153,11 +194,10 @@ function kycValid(message1,message2) {
           </div> 
           </div>
           `;
-  
-    setTimeout(() => {
-      popMessage.innerHTML = "";
-      popMessage.style.display = "none";
-      window.location.href = "./index.html"
-    }, 7000);
-  }
-  
+
+  setTimeout(() => {
+    popMessage.innerHTML = "";
+    popMessage.style.display = "none";
+    window.location.href = "./index.html";
+  }, 7000);
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crypto Float Cluster</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .cluster {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .crypto {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .bitcoin {
+      top: 110px;
+      left: 110px;
+      transform: scale(1.4);
+      animation-delay: 0s;
+    }
+
+    .eth {
+      top: 40px;
+      left: 120px;
+      transform: scale(1);
+      animation-delay: 1s;
+    }
+
+    .ltc {
+      top: 80px;
+      left: 30px;
+      transform: scale(0.9);
+      animation-delay: 2s;
+    }
+
+    .xrp {
+      top: 180px;
+      left: 40px;
+      transform: scale(1);
+      animation-delay: 2.5s;
+    }
+
+    .ada {
+      top: 190px;
+      left: 170px;
+      transform: scale(1);
+      animation-delay: 1.7s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(var(--scale, 1)); }
+      50% { transform: translateY(-10px) scale(var(--scale, 1)); }
+      100% { transform: translateY(0) scale(var(--scale, 1)); }
+    }
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+
+    .bitcoin svg {
+      width: 60px;
+      height: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cluster">
+
+    <!-- Bitcoin Icon -->
+<div class="crypto bitcoin">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#f7931a">
+      <path d="M16 0C7.163 0 0 7.164 0 16c0 8.837 7.163 16 16 16 8.837 
+      0 16-7.163 16-16 0-8.836-7.163-16-16-16zm1.186 23.527v2.182h-2.367v-2.124a36.404 
+      36.404 0 0 1-1.76-.072v2.197h-2.367v-2.267c-.448-.08-.88-.17-1.286-.272l.4-2.117c.34.08.68.152 
+      1.017.215l.226.04c.31-1.195.634-2.393.965-3.586l-.757-.177-.013-.003-.017-.004-.758-.176.635-2.28.9.208c.206.047.41.096.613.143l.998-3.7c-.1-.023-.2-.046-.302-.07l-1.09-.252.634-2.28 
+      1.096.254a13.07 13.07 0 0 1 .132-.435v-.002l1.3-4.82 2.4.646c.682.185 1.043.774.866 1.422-.165.594-.61.863-.99.94l.002.006c.31.08.635.15.974.217.704.143 
+      1.208.676.992 1.54-.17.67-.654.96-1.212 1.05l-.002.007c.32.08.64.167.956.26.72.223 
+      1.16.882.954 1.745-.18.737-.702 1.08-1.287 1.2l.002.01c.23.06.46.13.686.2.75.24 
+      1.23.914 1.007 1.832-.202.846-.767 1.197-1.367 1.31v2.214h-2.364v-2.127c-.58.018-1.16.022-1.742.015zm-.73-7.223c.757.004 
+      1.457.01 2.18.013.527.002.99-.2 1.103-.717.11-.51-.196-.777-.693-.884a16.543 
+      16.543 0 0 0-1.38-.193l-.69 2.05zm-.417 1.487l-.73 2.707c.81.016 1.547.017 
+      2.328.02.55.002 1.065-.176 1.203-.73.133-.54-.196-.847-.73-.97-.61-.134-1.237-.2-2.071-.23z"/>
+    </svg>
+  </div>
+  
+
+    <!-- Ethereum -->
+    <div class="crypto eth">
+      <svg fill="#3c3c3d" viewBox="0 0 256 417">
+        <path d="M127.6 0L124.8 9.6v271.2l2.8 2.8 127.6-75.6z"/>
+        <path d="M127.6 0L0 208l127.6 75.6V154.8z" fill-opacity=".6"/>
+        <path d="M127.6 306.8L125.6 309.2v107.2l2.8 0 127.6-180z"/>
+        <path d="M127.6 416.4V306.8L0 226z" fill-opacity=".6"/>
+        <path d="M127.6 283.6l127.6-75.6-127.6-57.2z" fill-opacity=".2"/>
+        <path d="M0 208l127.6 75.6v-132.8z" fill-opacity=".2"/>
+      </svg>
+    </div>
+
+    <!-- Litecoin -->
+    <div class="crypto ltc">
+      <svg fill="#b8b8b8" viewBox="0 0 256 256">
+        <path d="M153.33 0L124.13 120.65l36.23-8.33-5.32 24.83-36.23
+        8.34-16.14 71.91h106.41l-8.67 38.6H48.47L93.8 113.3 65.53 119.65l5.47-24.83
+        28.14-6.5L124.8 0z"/>
+      </svg>
+    </div>
+
+    <!-- Ripple -->
+    <div class="crypto xrp">
+      <svg fill="#006097" viewBox="0 0 512 512">
+        <path d="M391.1 203.7c0 36.5-29.7 66.2-66.2 66.2-36.5 0-66.2-29.7-66.2-66.2
+        0-36.5 29.7-66.2 66.2-66.2 36.5 0 66.2 29.7 66.2 66.2zm-197.6 110.6c0
+        36.5-29.7 66.2-66.2 66.2-36.5 0-66.2-29.7-66.2-66.2 0-36.5 29.7-66.2
+        66.2-66.2 36.5 0 66.2 29.7 66.2 66.2zm197.6 0c0 36.5-29.7 66.2-66.2
+        66.2-36.5 0-66.2-29.7-66.2-66.2 0-36.5 29.7-66.2 66.2-66.2 36.5 0
+        66.2 29.7 66.2 66.2z"/>
+      </svg>
+    </div>
+
+    <!-- Cardano -->
+    <div class="crypto ada">
+      <svg fill="#0033ad" viewBox="0 0 512 512">
+        <circle cx="256" cy="256" r="32"/>
+        <circle cx="192" cy="192" r="16"/>
+        <circle cx="320" cy="192" r="16"/>
+        <circle cx="192" cy="320" r="16"/>
+        <circle cx="320" cy="320" r="16"/>
+        <circle cx="256" cy="128" r="8"/>
+        <circle cx="128" cy="256" r="8"/>
+        <circle cx="384" cy="256" r="8"/>
+        <circle cx="256" cy="384" r="8"/>
+      </svg>
+    </div>
+
+  </div>
+</body>
+</html>

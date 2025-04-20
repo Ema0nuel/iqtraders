@@ -110,7 +110,6 @@
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="../assets/css/custom.css" />
-    
   </head>
 
   <body class="counter-scroll">
@@ -313,7 +312,26 @@
                               Bitcoin
                             </div>
                             <div class="number-exchange f12-medium text-center">
-                              1 BITCOIN = 43,474.50 USD
+                              <!-- TradingView Widget BEGIN -->
+                              <div class="tradingview-widget-container">
+                                <div
+                                  class="tradingview-widget-container__widget"
+                                ></div>
+                                <script
+                                  type="text/javascript"
+                                  src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js"
+                                  async
+                                >
+                                    {
+                                    "symbol": "CRYPTOCAP:BTC",
+                                    "width": "100%",
+                                    "isTransparent": true,
+                                    "colorTheme": "light",
+                                    "locale": "en"
+                                  }
+                                </script>
+                              </div>
+                              <!-- TradingView Widget END -->
                             </div>
                             <div class="desc f12-medium text-GrayDark">
                               Bitcoin, a pioneering cryptocurrency, exists
@@ -436,7 +454,7 @@
                             class="tf-button btn-profit style-1 f12-bold w-100 cursor-pointer"
                             id="profit-btn"
                             disabled
-                            style="cursor: not-allowed;"
+                            style="cursor: not-allowed"
                           >
                             Take Profit
                             <i class="icon icon-send"></i>
@@ -609,7 +627,10 @@
     <script src="js/switcher.js"></script>
     <script defer src="js/theme-settings.js"></script>
     <!-- Animation Icon -->
-  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
     <!-- CDN JS SCRIPT -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
