@@ -26,26 +26,25 @@ const firebaseConfig = {
   measurementId: "G-J7LYXPLFWF",
 };
 let logAdmin = localStorage.getItem("adminId");
-if (logAdmin || logAdmin === "123AIQ45$@**100!") {
+if (!logAdmin) {
   window.location.href = "./admin/index.html";
-}
+} else {
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth();
+  const db = getFirestore();
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth();
-const db = getFirestore();
+  const userTableBody = document.getElementById("user-table-body");
+  let html = "";
 
-const userTableBody = document.getElementById("user-table-body");
-let html = "";
+  onAuthStateChanged(auth, async (user) => {
+    const q = query(collection(db, "users"));
 
-onAuthStateChanged(auth, async (user) => {
-  const q = query(collection(db, "users"));
-
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    let userData = doc.data();
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      let userData = doc.data();
+      const row = document.createElement("tr");
+      row.innerHTML = `
         <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
                 <div class="flex-shrink-0 h-10 w-10">
@@ -86,9 +85,10 @@ onAuthStateChanged(auth, async (user) => {
             </span>
         </td>
         `;
-    userTableBody.appendChild(row);
+      userTableBody.appendChild(row);
+    });
   });
-});
+}
 
 const getStatusBadgeVariant = (status) => {
   switch (status) {
