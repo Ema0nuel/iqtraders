@@ -25,10 +25,7 @@ const firebaseConfig = {
   appId: "1:538849101252:web:ffbbd7906c267ce7231091",
   measurementId: "G-J7LYXPLFWF",
 };
-let logAdmin = localStorage.getItem("adminId");
-if (!logAdmin) {
-  window.location.href = "./admin/index.html";
-} else {
+
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth();
@@ -88,7 +85,7 @@ if (!logAdmin) {
       userTableBody.appendChild(row);
     });
   });
-}
+
 
 const getStatusBadgeVariant = (status) => {
   switch (status) {
