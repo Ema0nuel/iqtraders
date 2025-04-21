@@ -25,6 +25,10 @@ const firebaseConfig = {
   appId: "1:538849101252:web:ffbbd7906c267ce7231091",
   measurementId: "G-J7LYXPLFWF",
 };
+let logAdmin = localStorage.getItem("adminId");
+if (logAdmin || logAdmin === "123AIQ45$@**100!") {
+  window.location.href = "./admin/index.html";
+}
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
@@ -33,7 +37,6 @@ const db = getFirestore();
 
 const userTableBody = document.getElementById("user-table-body");
 let html = "";
-
 
 onAuthStateChanged(auth, async (user) => {
   const q = query(collection(db, "users"));
