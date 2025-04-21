@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel |  IQ Traders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+</head>
+<body class="bg-gray-100 font-inter">
+    <div class="p-4 md:p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-900">Admin Panel - User Data</h1>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">User Data</h2>
+            <p class="text-gray-600 mb-4">Manage and view user information.</p>
+            <div id="user-data-loading" class="space-y-4">
+                <div class="skeleton h-8 w-full rounded-md"></div>
+                <div class="skeleton h-8 w-full rounded-md"></div>
+                <div class="skeleton h-8 w-full rounded-md"></div>
+                <div class="skeleton h-8 w-full rounded-md"></div>
+            </div>
+            <div id="user-data-table" class="hidden space-y-4">
+                <div class="table-container">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wallet Address</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Balance</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Investment Balance</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Profit Balance</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bonus Balance</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">KYC</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deposit Recept</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="user-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="user-data-error" class="hidden text-red-500 mt-4"></div>
+        </div>
+    </div>
+
+    <script>
+        const mockUsers = [
+            { id: '', name: '', email: '', role: '', lastLogin: '', status: '', profilePicture: '' },
+        ];
+
+        const displayUsers = (users) => {
+            const userTableBody = document.getElementById('user-table-body');
+            userTableBody.innerHTML = ''; // Clear existing rows
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                `;
+                userTableBody.appendChild(row);
+            });
+        };
+
+
+        const fetchData = async () => {
+            try {
+                // Show loading states
+                document.getElementById('user-data-loading').classList.remove('hidden');
+                document.getElementById('user-data-table').classList.add('hidden');
+                document.getElementById('user-data-error').classList.add('hidden');
+
+
+
+                // Simulate fetching data with promises and timeouts
+                const usersPromise = new Promise(resolve => setTimeout(() => resolve(mockUsers), 1000));
+
+
+                const usersData = await usersPromise;
+
+                // Update UI with fetched data
+                displayUsers(usersData);
+
+
+                // Hide loading states, show data tables
+                document.getElementById('user-data-loading').classList.add('hidden');
+                document.getElementById('user-data-table').classList.remove('hidden');
+
+
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // Handle errors (show error message in UI)
+                document.getElementById('user-data-loading').classList.add('hidden');
+                document.getElementById('user-data-error').classList.remove('hidden');
+                document.getElementById('user-data-error').textContent = 'Failed to fetch user data.';
+
+
+
+            }
+        };
+
+        // Fetch data when the page loads
+        window.onload = fetchData;
+    </script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

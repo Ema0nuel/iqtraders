@@ -1,0 +1,26 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Custom styles for the loading skeleton */
+.skeleton {
+  background-color: #e5e7eb; /* Gray 200 */
+  -webkit-mask: linear-gradient(90deg, transparent, #0004, transparent);
+  mask: linear-gradient(90deg, transparent, #0004, transparent);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Add this to prevent table overflow */
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.btn-success{
+    background-color: #558B2F;
+    color: #fff;
+}
