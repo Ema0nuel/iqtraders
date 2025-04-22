@@ -30,7 +30,8 @@ const popMessage = document.getElementById("confirmation-popup");
 const cryptoBalance = document.getElementById("crypto_balance");
 const investmentBalance = document.getElementById("investment_balance");
 const profitBalance = document.getElementById("profit_balance");
-const bonusBalance = document.getElementById("bonus_balance")
+const bonusBalance = document.getElementById("bonus_balance");
+const userNameDisplay = document.getElementById("user-name-display-div")
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -95,4 +96,5 @@ function renderUserData(userData) {
   investmentBalance.innerHTML = `$${Math.floor(userData.Investment_Balance)}.00`
   profitBalance.innerHTML = `$${Math.floor(userData.Profit_Balance)}.00`;
   bonusBalance.innerHTML = `$${Math.floor(userData.Bonus)}.00`;
+  userNameDisplay.innerHTML = `Welcome, ${userData.firstName} 👋`
 }

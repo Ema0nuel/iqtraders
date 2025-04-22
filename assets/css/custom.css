@@ -635,6 +635,14 @@
   right: 20px;
   padding: 10px 0;
 }
+.user-name-display{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 20px;
+}
 @media (min-width: 1115px) {
   .p-icon {
     bottom: 7.5em;
