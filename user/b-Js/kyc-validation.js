@@ -199,5 +199,5 @@ function kycValid(message1, message2) {
     popMessage.innerHTML = "";
     popMessage.style.display = "none";
     window.location.href = "./index.html";
-  }, 7000);
+  }, 10000);
 }
