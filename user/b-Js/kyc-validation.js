@@ -86,7 +86,7 @@ onAuthStateChanged(auth, (user) => {
               regionInput.value === "" ||
               nationalityInput.value === "" ||
               addressInput.value === "" ||
-              validIdInput.value ||
+              validIdInput.value === "" ||
               validIdTypeSelect.value === "" ||
               residentialValidationInput.value === "" ||
               residentialValidationTypeSelect.value === "" ||

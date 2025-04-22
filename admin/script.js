@@ -10,6 +10,8 @@ import {
   getDocs,
   collection,
   query,
+  doc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -26,22 +28,23 @@ const firebaseConfig = {
   measurementId: "G-J7LYXPLFWF",
 };
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth();
-  const db = getFirestore();
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getFirestore();
 
-  const userTableBody = document.getElementById("user-table-body");
-  let html = "";
+const userTableBody = document.getElementById("user-table-body");
+let html = "";
 
-  onAuthStateChanged(auth, async (user) => {
-    const q = query(collection(db, "users"));
+onAuthStateChanged(auth, async (user) => {
+  const q = query(collection(db, "users"));
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      let userData = doc.data();
-      const row = document.createElement("tr");
-      row.innerHTML = `
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    let userData = doc.data();
+    let id = doc.id;
+    const row = document.createElement("tr");
+    row.innerHTML = `
         <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
                 <div class="flex-shrink-0 h-10 w-10">
@@ -62,17 +65,29 @@ const firebaseConfig = {
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             ${userData.depositWallet === "" ? "None" : userData.depositWallet}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-balance-${id}">
             $${Math.floor(userData.Balance)}
+            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-investment-${id}">
             $${Math.floor(userData.Investment_Balance)}
+            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-profit-${id}">
             $${Math.floor(userData.Profit_Balance)}
+            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-bonus-${id}">
             $${Math.floor(userData.Bonus)}
+            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
             <span class="${getStatusBadgeVariant(
@@ -81,11 +96,40 @@ const firebaseConfig = {
                 ${userData.KYC === 0 ? "Not Verified" : "Verified"}
             </span>
         </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+          <span>Hello</span>
+        </td>
         `;
-      userTableBody.appendChild(row);
+    userTableBody.appendChild(row);
+  });
+  updateUserDetails();
+});
+
+function updateUserDetails() {
+  document.querySelectorAll(".update-btn-id").forEach((updateBtn) => {
+    updateBtn.addEventListener("click", () => {
+      const { userId } = updateBtn.dataset;
+      const userBalanceDiv = document.querySelector(`.user-balance-${userId}`);
+      const userInvestmentDiv = document.querySelector(`.user-investment-${userId}`)
+      const userProfitDiv = document.querySelector(`.user-profit-${userId}`)
+      const userBonusDiv = document.querySelector(`.user-bonus-${userId}`)
+
+      html = `
+        <div class="container">
+          <div class="form-group">
+              <label for="unique-input-field">Update Value</label>
+              <input type="number" id="update-input-${userId}" class="form-control" placeholder="Enter value" />
+          </div>
+
+          <div class="button-group">
+              <button class="update-button-${userId}" class="button update-button">Update</button>
+              <button id="cancel-button" class="button cancel-button">Cancel</button>
+          </div>
+        </div>  
+      `
     });
   });
-
+}
 
 const getStatusBadgeVariant = (status) => {
   switch (status) {
