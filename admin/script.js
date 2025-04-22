@@ -34,6 +34,7 @@ const auth = getAuth();
 const db = getFirestore();
 
 const userTableBody = document.getElementById("user-table-body");
+const popMessage = document.getElementById("confirmation-popup");
 let html = "";
 
 onAuthStateChanged(auth, async (user) => {
@@ -109,24 +110,32 @@ function updateUserDetails() {
   document.querySelectorAll(".update-btn-id").forEach((updateBtn) => {
     updateBtn.addEventListener("click", () => {
       const { userId } = updateBtn.dataset;
+      const parentElement = updateBtn.parentNode;
       const userBalanceDiv = document.querySelector(`.user-balance-${userId}`);
-      const userInvestmentDiv = document.querySelector(`.user-investment-${userId}`)
-      const userProfitDiv = document.querySelector(`.user-profit-${userId}`)
-      const userBonusDiv = document.querySelector(`.user-bonus-${userId}`)
-
+      const userInvestmentDiv = document.querySelector(
+        `.user-investment-${userId}`
+      );
+      const userProfitDiv = document.querySelector(`.user-profit-${userId}`);
+      const userBonusDiv = document.querySelector(`.user-bonus-${userId}`);
+      popMessage.style.display = "flex";
       html = `
+      <div class="animation-container-p">
         <div class="container">
           <div class="form-group">
-              <label for="unique-input-field">Update Value</label>
-              <input type="number" id="update-input-${userId}" class="form-control" placeholder="Enter value" />
-          </div>
-
+            <label for="unique-input-field" class="label-header">Update Entries</label>
+            <input type="number" id="update-input-${userId}" class="form-control" placeholder="Enter value" />
+          </div>        
           <div class="button-group">
-              <button class="update-button-${userId}" class="button update-button">Update</button>
-              <button id="cancel-button" class="button cancel-button">Cancel</button>
+            <button id="update-button-${userId}" class="button update-button gg-btn">Update</button>
+            <button id="cancel-button" class="button cancel-button">Cancel</button>
           </div>
         </div>  
-      `
+      </div>
+      `;
+
+      popMessage.innerHTML = html;
+      updateEvent(userId, parentElement);
+      cancelEvent();
     });
   });
 }
@@ -139,3 +148,85 @@ const getStatusBadgeVariant = (status) => {
       return "bg-red-100 text-red-800";
   }
 };
+
+function cancelEvent() {
+  const cancelBtn = document.getElementById("cancel-button");
+  cancelBtn.addEventListener("click", () => {
+    popMessage.innerHTML = "";
+    popMessage.style.display = "none";
+  });
+}
+
+function updateEvent(userId, parentElement) {
+  const updateBtn = document.getElementById(`update-button-${userId}`);
+  const inputValue = document.getElementById(`update-input-${userId}`);
+  let value = parentElement.innerText.slice(1);
+  inputValue.value = Number(value);
+  updateBtn.addEventListener("click", () => {
+    onAuthStateChanged(auth, (user) => {
+      const docRef = doc(db, "users", userId);
+      let inputVal = Number(inputValue.value);
+      if (inputVal === "") {
+        alert("Enter a value");
+      } else {
+        if (parentElement.classList.contains(`user-balance-${userId}`)) {
+          let updateData = {
+            Balance: Math.floor(inputVal),
+          };
+          updateDoc(docRef, updateData);
+          parentElement.innerHTML = `
+          $${inputVal} 
+          <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>`;
+          updateUserDetails();
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+        } else if (
+          parentElement.classList.contains(`user-investment-${userId}`)
+        ) {
+          let updateData = {
+            Investment_Balance: Math.floor(inputVal),
+          };
+          updateDoc(docRef, updateData);
+          parentElement.innerHTML = `
+          $${inputVal} 
+          <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>`;
+          updateUserDetails();
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+        } else if (parentElement.classList.contains(`user-profit-${userId}`)) {
+          let updateData = {
+            Profit_Balance: Math.floor(inputVal),
+          };
+          updateDoc(docRef, updateData);
+          parentElement.innerHTML = `
+          $${inputVal} 
+          <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>`;
+          updateUserDetails();
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+        } else if (parentElement.classList.contains(`user-bonus-${userId}`)) {
+          let updateData = {
+            Bonus: Math.floor(inputVal),
+          };
+          updateDoc(docRef, updateData);
+          parentElement.innerHTML = `
+        $${inputVal} 
+        <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
+        <i class="fa-solid fa-pen-to-square"></i>
+        </button>`;
+          updateUserDetails();
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+        } else {
+          alert("Error Entering Values");
+        }
+      }
+    });
+  });
+}

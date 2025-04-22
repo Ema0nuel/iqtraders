@@ -36,18 +36,6 @@ body {
   transition: all 0.3s;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #f7fafc;
-  color: #1a202c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
-}
-
 .container {
   background-color: #fff;
   border-radius: 0.5rem;
@@ -74,9 +62,9 @@ h1 {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #718096;
-  font-size: 0.875rem;
-  font-weight: 500;
+  color: #1c1d1d;
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .form-control {
@@ -114,21 +102,21 @@ h1 {
 }
 
 .update-button {
-  background-color: #4299e1;
+  background-color: #42e17f;
   color: white;
 }
 
 .update-button:hover {
-  background-color: #3182ce;
+  background-color: #40bd93;
 }
 
 .cancel-button {
-  background-color: #cbd5e0;
+  background-color: #ee0909;
   color: #2d3748;
 }
 
 .cancel-button:hover {
-  background-color: #a0aec0;
+  background-color: #eb7373;
 }
 
 .feedback-message {
