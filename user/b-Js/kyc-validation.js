@@ -42,7 +42,7 @@ const auth = getAuth();
 const db = getFirestore();
 
 const popMessage = document.getElementById("confirmation-popup");
-const form = document.getElementById("registrationForm");
+const form = document.getElementById("submit-kyc-registration");
 const firstNameInput = document.getElementById("firstName");
 const lastNameInput = document.getElementById("lastName");
 const emailInput = document.getElementById("email");
@@ -75,12 +75,9 @@ onAuthStateChanged(auth, (user) => {
           window.location.href = "./index.html";
         } else {
           inputValidation(userData);
-          form.addEventListener("submit", (e) => {
+          form.addEventListener("click", (e) => {
             e.preventDefault();
             if (
-              firstNameInput.value === "" ||
-              lastNameInput.value === "" ||
-              emailInput.value === "" ||
               phoneInput.value === "" ||
               dateOfBirthInput.value === "" ||
               regionInput.value === "" ||
@@ -148,31 +145,54 @@ function updateData(docRef) {
 
     let imageIndex = base64Data;
 
-    let updateData = {
-      firstName: firstNameInput.value,
-      lastName: lastNameInput.value,
-      email: emailInput.value,
-      Phone: phoneInput.value,
-      Date_of_Birth: dateOfBirthInput.value,
-      Region: regionInput.value,
-      Nationality: nationalityInput.value,
-      Address: addressInput.value,
-      Valid_Id_Type: validIdTypeSelect.value,
-      Valid_Id: validIdInput.value,
-      Residential_Validation_Type: residentialValidationTypeSelect.value,
-      Residential_Validation: residentialValidationInput.value,
-      Investing_Currency: investingCurrencySelect.value,
-      Picture: imageIndex,
-      Gender: genderSelect.value,
-      depositWallet: walletAddressIdInput.value,
-      KYC: 1,
-    };
+    let imageSize = getImageBlobSize(file);
+    if (imageSize <= 1048487) {
+      let updateData = {
+        firstName: firstNameInput.value,
+        lastName: lastNameInput.value,
+        email: emailInput.value,
+        Phone: phoneInput.value,
+        Date_of_Birth: dateOfBirthInput.value,
+        Region: regionInput.value,
+        Nationality: nationalityInput.value,
+        Address: addressInput.value,
+        Valid_Id_Type: validIdTypeSelect.value,
+        Valid_Id: validIdInput.value,
+        Residential_Validation_Type: residentialValidationTypeSelect.value,
+        Residential_Validation: residentialValidationInput.value,
+        Investing_Currency: investingCurrencySelect.value,
+        Picture: imageIndex,
+        Gender: genderSelect.value,
+        depositWallet: walletAddressIdInput.value,
+        KYC: 1,
+      };
 
-    updateDoc(docRef, updateData);
-    kycValid(
-      "Thank for Submitting your KYC Verifications",
-      "It's under review in 48 Hours"
-    );
+      console.log(updateData);
+      updateDoc(docRef, updateData);
+      kycValid(
+        "Thank for Submitting your KYC Verifications",
+        "It's under review in 48 Hours"
+      );
+    } else {
+      popMessage.style.display = "flex";
+      popMessage.innerHTML = `
+        <div class="animation-container-p">
+        <div class="x-mark-wrapper">
+            <svg class="x-mark" viewBox="0 0 52 52">
+                <path d="M16 16 36 36M36 16 16 36" />
+            </svg>
+            <div class="text-wrapper">
+                <p>Image too Big!</p>
+            </div>
+        </div>
+        </div>
+               `;
+
+      setTimeout(() => {
+        popMessage.innerHTML = "";
+        popMessage.style.display = "none";
+      }, 3500);
+    }
   };
 
   reader.onerror = () => {
@@ -199,5 +219,14 @@ function kycValid(message1, message2) {
     popMessage.innerHTML = "";
     popMessage.style.display = "none";
     window.location.href = "./index.html";
-  }, 10000);
+  }, 7000);
+}
+
+function getImageBlobSize(blob) {
+  if (blob instanceof Blob) {
+    return blob.size; // Returns the size of the Blob in bytes
+  } else {
+    console.error("Input is not a Blob object.");
+    return null;
+  }
 }

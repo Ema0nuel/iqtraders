@@ -340,15 +340,37 @@ onAuthStateChanged(auth, (user) => {
                 const base64Data = reader.result;
 
                 let imageIndex = base64Data;
-                if (window.confirm("Have you made the payment?")) {
-                  let updateData = {
-                    depositWallet: walletId.value,
-                    Payment_Screenshot: imageIndex,
-                  };
-                  updateDoc(docRef, updateData);
-                  newCardSuccessful("Deposit Successful!");
+                let imageSize = getImageBlobSize(file);
+                if (imageSize <= 1048487) {
+                  if (window.confirm("Have you made the payment?")) {
+                    let updateData = {
+                      depositWallet: walletId.value,
+                      Payment_Screenshot: imageIndex,
+                    };
+                    updateDoc(docRef, updateData);
+                    newCardSuccessful("Deposit Successful!");
+                  } else {
+                    alert("Deposit Cancelled!");
+                  }
                 } else {
-                  alert("Deposit Cancelled!");
+                  popMessage.style.display = "flex";
+                  popMessage.innerHTML = `
+                    <div class="animation-container-p">
+                    <div class="x-mark-wrapper">
+                        <svg class="x-mark" viewBox="0 0 52 52">
+                            <path d="M16 16 36 36M36 16 16 36" />
+                        </svg>
+                        <div class="text-wrapper">
+                            <p>Image too Big!</p>
+                        </div>
+                    </div>
+                    </div>
+               `;
+
+                  setTimeout(() => {
+                    popMessage.innerHTML = "";
+                    popMessage.style.display = "none";
+                  }, 3500);
                 }
               };
 
@@ -490,3 +512,12 @@ withdrawBtn.addEventListener("click", () => {
   const cancelBtn = document.getElementById("cancel-sign-btn");
   cancelPop(cancelBtn, popMessage);
 });
+
+function getImageBlobSize(blob) {
+  if (blob instanceof Blob) {
+    return blob.size; // Returns the size of the Blob in bytes
+  } else {
+    console.error("Input is not a Blob object.");
+    return null;
+  }
+}
