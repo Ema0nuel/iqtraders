@@ -51,7 +51,7 @@ onAuthStateChanged(auth, async (user) => {
                 <div class="flex-shrink-0 h-10 w-10">
                     <img class="h-10 w-10 rounded-full" src="${
                       userData.Picture === ""
-                        ? userData.firstName
+                        ? "../user/images/avatar/user-default.png"
                         : userData.Picture
                     }" alt="${userData.firstName}">
                 </div>
@@ -97,13 +97,19 @@ onAuthStateChanged(auth, async (user) => {
                 ${userData.KYC === 0 ? "Not Verified" : "Verified"}
             </span>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-          <span>Hello</span>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 gallery">
+          ${
+            userData.Payment_Screenshot === undefined ||
+            userData.Payment_Screenshot === ""
+              ? "No Payment Made"
+              : `<img src="${userData.Payment_Screenshot}" class="gallery-item"></img>`
+          }
         </td>
         `;
     userTableBody.appendChild(row);
   });
   updateUserDetails();
+  expandImageItem();
 });
 
 function updateUserDetails() {
@@ -111,12 +117,6 @@ function updateUserDetails() {
     updateBtn.addEventListener("click", () => {
       const { userId } = updateBtn.dataset;
       const parentElement = updateBtn.parentNode;
-      const userBalanceDiv = document.querySelector(`.user-balance-${userId}`);
-      const userInvestmentDiv = document.querySelector(
-        `.user-investment-${userId}`
-      );
-      const userProfitDiv = document.querySelector(`.user-profit-${userId}`);
-      const userBonusDiv = document.querySelector(`.user-bonus-${userId}`);
       popMessage.style.display = "flex";
       html = `
       <div class="animation-container-p">
@@ -228,5 +228,34 @@ function updateEvent(userId, parentElement) {
         }
       }
     });
+  });
+}
+
+function expandImageItem() {
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  const expandedContainer = document.getElementById("expanded-container");
+  const expandedImage = document.getElementById("expanded-image");
+  const closeButton = document.getElementById("close-button");
+
+  galleryItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const clickedImageSrc = item.src;
+      expandedImage.src = clickedImageSrc;
+      expandedContainer.style.display = "flex";
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+    });
+  });
+
+  closeButton.addEventListener("click", () => {
+    expandedContainer.style.display = "none";
+    document.body.style.overflow = ""; // Allow scrolling again
+  });
+
+  expandedContainer.addEventListener("click", (event) => {
+    // Close the container if the user clicks outside the image.
+    if (event.target === expandedContainer) {
+      expandedContainer.style.display = "none";
+      document.body.style.overflow = "";
+    }
   });
 }

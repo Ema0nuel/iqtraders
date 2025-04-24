@@ -277,6 +277,19 @@ onAuthStateChanged(auth, (user) => {
                     required
                     /> 
                   </div>
+                  <div class="form-control deposit-input img-input-d">
+                    <label
+                      for="picture"
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      >Payment Screenshot</label>
+                      <input
+                        type="file"
+                        id="picture"
+                        name="picture"
+                        accept="image/*"
+                        class="leading-tight focus:outline-none focus:shadow-outline"
+                      />
+                  </div>
                   <div class="form-btn">
                     <button type="submit" class="btn btn-primary" id="confirm-deposit">
                     Confirm Payment 
@@ -300,34 +313,50 @@ onAuthStateChanged(auth, (user) => {
           confirmDeposit.addEventListener("click", (e) => {
             e.preventDefault();
             const walletId = document.getElementById("deposit-wallet-id");
-            if (walletId.value === "") {
+            const pictureInput = document.getElementById("picture");
+            if (walletId.value === "" || pictureInput.value === "") {
               popMessage.style.display = "flex";
               popMessage.innerHTML = `
-          <div class="animation-container-p">
-          <div class="x-mark-wrapper">
-              <svg class="x-mark" viewBox="0 0 52 52">
-                  <path d="M16 16 36 36M36 16 16 36" />
-              </svg>
-              <div class="text-wrapper">
-                  <p>Fill out Parameters!</p>
+            <div class="animation-container-p">
+            <div class="x-mark-wrapper">
+                <svg class="x-mark" viewBox="0 0 52 52">
+                    <path d="M16 16 36 36M36 16 16 36" />
+                </svg>
+                <div class="text-wrapper">
+                    <p>Fill out Parameters!</p>
+                </div>
               </div>
-            </div>
-            </div>
+              </div>
           `;
               setTimeout(() => {
                 popMessage.innerHTML = "";
                 popMessage.style.display = "none";
               }, 3500);
             } else {
-              if (window.confirm("Have you made the payment?")) {
-                let updateData = {
-                  depositWallet: walletId.value,
-                };
-                updateDoc(docRef, updateData);
-                newCardSuccessful("Deposit Successful!");
-              } else {
-                alert("Deposit Cancelled!");
-              }
+              const file = pictureInput.files[0];
+              const reader = new FileReader();
+
+              reader.onload = () => {
+                const base64Data = reader.result;
+
+                let imageIndex = base64Data;
+                if (window.confirm("Have you made the payment?")) {
+                  let updateData = {
+                    depositWallet: walletId.value,
+                    Payment_Screenshot: imageIndex,
+                  };
+                  updateDoc(docRef, updateData);
+                  newCardSuccessful("Deposit Successful!");
+                } else {
+                  alert("Deposit Cancelled!");
+                }
+              };
+
+              reader.onerror = () => {
+                console.error("Error reading file:", reader.error);
+                alert("Failed to read file.  See console for details.");
+              };
+              reader.readAsDataURL(file);
             }
           });
         });

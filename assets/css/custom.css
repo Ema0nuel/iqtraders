@@ -643,6 +643,9 @@
   font-weight: 700;
   font-size: 20px;
 }
+.img-input-d input{
+  border-radius: 8px;
+}
 @media (min-width: 1115px) {
   .p-icon {
     bottom: 7.5em;

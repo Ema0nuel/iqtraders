@@ -96,17 +96,17 @@ onAuthStateChanged(auth, (user) => {
             ) {
               popMessage.style.display = "flex";
               popMessage.innerHTML = `
-        <div class="animation-container-p">
-        <div class="x-mark-wrapper">
-            <svg class="x-mark" viewBox="0 0 52 52">
-                <path d="M16 16 36 36M36 16 16 36" />
-            </svg>
-            <div class="text-wrapper">
-                <p>Fill out Parameters!</p>
-            </div>
-        </div>
-        </div>
-        `;
+                <div class="animation-container-p">
+                <div class="x-mark-wrapper">
+                    <svg class="x-mark" viewBox="0 0 52 52">
+                        <path d="M16 16 36 36M36 16 16 36" />
+                    </svg>
+                    <div class="text-wrapper">
+                        <p>Fill out Parameters!</p>
+                    </div>
+                </div>
+                </div>
+               `;
 
               setTimeout(() => {
                 popMessage.innerHTML = "";
