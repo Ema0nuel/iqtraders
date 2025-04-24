@@ -286,7 +286,7 @@ onAuthStateChanged(auth, (user) => {
                         type="file"
                         id="picture"
                         name="picture"
-                        accept="image/*"
+                        accept=".jpg, .jpeg, .png, .gif, .webp, .heif"
                         class="leading-tight focus:outline-none focus:shadow-outline"
                       />
                   </div>
