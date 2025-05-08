@@ -148,10 +148,6 @@ function updateData(docRef) {
     let imageSize = getImageBlobSize(file);
     if (imageSize <= 1048487) {
       let updateData = {
-        firstName: firstNameInput.value,
-        lastName: lastNameInput.value,
-        email: emailInput.value,
-        Phone: phoneInput.value,
         Date_of_Birth: dateOfBirthInput.value,
         Region: regionInput.value,
         Nationality: nationalityInput.value,
@@ -167,7 +163,6 @@ function updateData(docRef) {
         KYC: 1,
       };
 
-      console.log(updateData);
       updateDoc(docRef, updateData);
       kycValid(
         "Thank for Submitting your KYC Verifications",

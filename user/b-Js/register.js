@@ -133,6 +133,7 @@ signupBtn.addEventListener("click", (e) => {
           Region: "",
           Nationality: "",
           Address: "",
+          Gender: "",
           Valid_Id_Type: "",
           Valid_Id: "",
           Residential_Validation_Type: "",
