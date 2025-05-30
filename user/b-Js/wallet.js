@@ -37,7 +37,6 @@ const cardDetailsDiv = document.getElementById("card-details");
 const bonusIncome = document.getElementById("bonus-income");
 const totalIncome = document.getElementById("total-income");
 const incomePercent = document.getElementById("income-percent");
-const withdrawBtn = document.getElementById("withdraw-btn");
 
 let successIcon = `<dotlottie-player
   src="https://lottie.host/16dbd64b-ed86-44e4-9084-d3bcf3aa5c1c/VoqLrrvykV.lottie"
@@ -477,41 +476,6 @@ function renderCardDetails(userData) {
 
   cardDetailsDiv.innerHTML = html;
 }
-
-withdrawBtn.addEventListener("click", () => {
-  popMessage.style.display = "flex";
-  popMessage.innerHTML = `
-  <div class="relative animation-container-p ">
-  <div class="cancel-sign-btn" id="cancel-sign-btn"><span>&#10005;</span></div>
-    <div class="icon-wrapper">
-      <svg class="notification-icon" viewBox="0 0 52 52">
-        <path d="M26 6.3a19.5 19.5 0 0 1 13.8 33.2c.1 2.3-1.9 4-4.1 4H16.3c-2.2 0-4.2-1.7-4.1-4a19.5 19.5 0 0 1 13.8-33.2z"/>
-          <path d="M26 17.5v10.5"/>
-          <path d="M26 39.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
-      </svg>
-      <div class="text-wrapper text-center">
-          <p>Withdrawal not activated!</p>
-          <p>Contact our support team at 
-            <p class="text admin-icon">
-              <a
-                href="https://t.me/Trader_Martinezan01 "
-                target="_blank"
-              >
-                <i class="fa-brands fa-telegram"></i>
-              </a>
-              <a href="https://wa.link/tkkvm1" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </p>
-          </p>
-      </div>
-    </div>
-  </div>
-`;
-
-  const cancelBtn = document.getElementById("cancel-sign-btn");
-  cancelPop(cancelBtn, popMessage);
-});
 
 function getImageBlobSize(blob) {
   if (blob instanceof Blob) {

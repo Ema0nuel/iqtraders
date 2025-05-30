@@ -72,6 +72,138 @@
     </div>
   </div>
   <!--loader start -->
+
+  <div style="z-index: 9999999;">
+    <!-- Language Selector Button (Top Right) -->
+    <div id="custom-translate-toggle" class="fixed top-6 right-6 z-50">
+        <button id="show-translate"
+            class="bg-white shadow-lg rounded-full p-3 flex items-center justify-center hover:bg-green-100 transition text-2xl"
+            title="Translate">
+            🌎
+        </button>
+    </div>
+
+    <!-- Hidden Language Selector Popup -->
+    <div id="custom-translate-popup"
+        class="fixed top-16 right-6 z-50 bg-white/95 rounded-xl shadow-lg px-4 py-3 flex flex-col items-center gap-2 border border-green-200"
+        style="display:none;">
+        <div class="w-full text-center font-bold text-green-700 mb-2 flex items-center gap-2">
+            <i class="fas fa-globe"></i>
+            <span>Translate</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="en">
+                <span class="fi fi-us"></span> English
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="es">
+                <span class="fi fi-es"></span> Español
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="fr">
+                <span class="fi fi-fr"></span> Français
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="de">
+                <span class="fi fi-de"></span> Deutsch
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="zh-CN">
+                <span class="fi fi-cn"></span> 中文
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="ar">
+                <span class="fi fi-sa"></span> العربية
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="ru">
+                <span class="fi fi-ru"></span> Русский
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="pt">
+                <span class="fi fi-pt"></span> Português
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="hi">
+                <span class="fi fi-in"></span> हिन्दी
+            </button>
+            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                data-lang="ja">
+                <span class="fi fi-jp"></span> 日本語
+            </button>
+        </div>
+    </div>
+
+    <!-- Google Translate Element (hidden) -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Flag Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.1/css/flag-icons.min.css" />
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Custom Translate Script -->
+    <script>
+        // Helper to trigger Google Translate
+        function setLanguage(lang) {
+            const select = document.querySelector("select.goog-te-combo");
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event("change"));
+            }
+        }
+
+        // Wait for Google Translate to load
+        function waitForTranslate() {
+            const select = document.querySelector("select.goog-te-combo");
+            if (select) {
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.onclick = () => {
+                        setLanguage(btn.getAttribute('data-lang'));
+                        document.getElementById('custom-translate-popup').style.display = 'none';
+                    };
+                });
+            } else {
+                setTimeout(waitForTranslate, 500);
+            }
+        }
+        waitForTranslate();
+
+        // Hide Google Translate default UI
+        document.addEventListener("DOMContentLoaded", function () {
+            const style = document.createElement('style');
+            style.innerHTML = `
+      .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon, .goog-te-menu-value, .goog-te-gadget-simple, .goog-te-combo, .goog-te-balloon-frame, .goog-te-menu-frame, .goog-te-menu2 { display: none !important; }
+      body { top: 0 !important; }
+    `;
+            document.head.appendChild(style);
+
+            // Show/hide popup logic
+            const toggleBtn = document.getElementById('show-translate');
+            const popup = document.getElementById('custom-translate-popup');
+            toggleBtn.addEventListener('click', () => {
+                popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+            });
+            // Hide popup when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!popup.contains(e.target) && e.target !== toggleBtn) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    </div>
+    
   <div id="confirmation-popup" style="display: none"></div>
   <div id="wrapper">
     <!-- #page -->
@@ -107,7 +239,7 @@
                       <div class="mb-20 flex flex-wrap justify-between gap14 items-center">
                         <h6>Wallet Details</h6>
                         <div class="flex items-center flex-wrap gap6">
-                          <a id="withdraw-btn" class="tf-button style-4 f12-bold cursor-pointer border-tt">
+                          <a href="../user/withdraw/index.html" class="tf-button style-4 f12-bold cursor-pointer border-tt">
                             <i class="fa-solid fa-money-bill-transfer"></i> 
                             Place Withdrawal
                           </a>
