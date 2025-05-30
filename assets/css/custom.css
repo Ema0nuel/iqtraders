@@ -635,7 +635,7 @@
   right: 20px;
   padding: 10px 0;
 }
-.user-name-display{
+.user-name-display {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -643,7 +643,7 @@
   font-weight: 700;
   font-size: 20px;
 }
-.img-input-d input{
+.img-input-d input {
   border-radius: 8px;
 }
 @media (min-width: 1115px) {
@@ -653,4 +653,25 @@
   .add-ttt {
     bottom: 13.5em;
   }
+}
+
+/*# sourceMappingURL=styles.css.map */
+html,
+body {
+  font-size: 1rem !important; /* Bootstrap default is 16px */
+  font-family: var(--bs-body-font-family, inherit) !important;
+}
+
+body,
+#wrapper,
+.main-content,
+.container,
+.section-content-right {
+  font-size: 1rem !important;
+  font-family: var(--bs-body-font-family, inherit) !important;
+}
+/* Force all text to be bold everywhere */
+body,
+body * {
+  font-weight: bold !important;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Broker Withdrawal UI</title>
+    <title>IQ Traders</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -72,134 +72,134 @@
     <!--loader start -->
 
     <div style="z-index: 9999999;">
-    <!-- Language Selector Button (Top Right) -->
-    <div id="custom-translate-toggle" class="fixed bottom-6 left-6 z-50">
-        <button id="show-translate"
-            class="bg-white shadow-lg rounded-full p-3 flex items-center justify-center hover:bg-green-100 transition text-2xl"
-            title="Translate">
-            🌎
-        </button>
-    </div>
-
-    <!-- Hidden Language Selector Popup -->
-    <div id="custom-translate-popup"
-        class="fixed bottom-16 left-6 z-50 bg-white/95 rounded-xl shadow-lg px-4 py-3 flex flex-col items-center gap-2 border border-green-200"
-        style="display:none;">
-        <div class="w-full text-center font-bold text-green-700 mb-2 flex items-center gap-2">
-            <i class="fas fa-globe"></i>
-            <span>Translate</span>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="en">
-                <span class="fi fi-us"></span> English
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="es">
-                <span class="fi fi-es"></span> Español
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="fr">
-                <span class="fi fi-fr"></span> Français
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="de">
-                <span class="fi fi-de"></span> Deutsch
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="zh-CN">
-                <span class="fi fi-cn"></span> 中文
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="ar">
-                <span class="fi fi-sa"></span> العربية
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="ru">
-                <span class="fi fi-ru"></span> Русский
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="pt">
-                <span class="fi fi-pt"></span> Português
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="hi">
-                <span class="fi fi-in"></span> हिन्दी
-            </button>
-            <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
-                data-lang="ja">
-                <span class="fi fi-jp"></span> 日本語
+        <!-- Language Selector Button (Top Right) -->
+        <div id="custom-translate-toggle" class="fixed bottom-6 left-6 z-50">
+            <button id="show-translate"
+                class="bg-white shadow-lg rounded-full p-3 flex items-center justify-center hover:bg-green-100 transition text-2xl"
+                title="Translate">
+                🌎
             </button>
         </div>
-    </div>
 
-    <!-- Google Translate Element (hidden) -->
-    <div id="google_translate_element" style="display:none;"></div>
+        <!-- Hidden Language Selector Popup -->
+        <div id="custom-translate-popup"
+            class="fixed bottom-16 left-6 z-50 bg-white/95 rounded-xl shadow-lg px-4 py-3 flex flex-col items-center gap-2 border border-green-200"
+            style="display:none;">
+            <div class="w-full text-center font-bold text-green-700 mb-2 flex items-center gap-2">
+                <i class="fas fa-globe"></i>
+                <span>Translate</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="en">
+                    <span class="fi fi-us"></span> English
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="es">
+                    <span class="fi fi-es"></span> Español
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="fr">
+                    <span class="fi fi-fr"></span> Français
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="de">
+                    <span class="fi fi-de"></span> Deutsch
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="zh-CN">
+                    <span class="fi fi-cn"></span> 中文
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="ar">
+                    <span class="fi fi-sa"></span> العربية
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="ru">
+                    <span class="fi fi-ru"></span> Русский
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="pt">
+                    <span class="fi fi-pt"></span> Português
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="hi">
+                    <span class="fi fi-in"></span> हिन्दी
+                </button>
+                <button class="lang-btn flex items-center gap-2 px-2 py-1 rounded hover:bg-green-100 transition"
+                    data-lang="ja">
+                    <span class="fi fi-jp"></span> 日本語
+                </button>
+            </div>
+        </div>
 
-    <!-- Flag Icons CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.1/css/flag-icons.min.css" />
+        <!-- Google Translate Element (hidden) -->
+        <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <!-- Flag Icons CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.1/css/flag-icons.min.css" />
 
-    <!-- Custom Translate Script -->
-    <script>
-        // Helper to trigger Google Translate
-        function setLanguage(lang) {
-            const select = document.querySelector("select.goog-te-combo");
-            if (select) {
-                select.value = lang;
-                select.dispatchEvent(new Event("change"));
+        <!-- Google Translate Script -->
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    autoDisplay: false
+                }, 'google_translate_element');
             }
-        }
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-        // Wait for Google Translate to load
-        function waitForTranslate() {
-            const select = document.querySelector("select.goog-te-combo");
-            if (select) {
-                document.querySelectorAll('.lang-btn').forEach(btn => {
-                    btn.onclick = () => {
-                        setLanguage(btn.getAttribute('data-lang'));
-                        document.getElementById('custom-translate-popup').style.display = 'none';
-                    };
-                });
-            } else {
-                setTimeout(waitForTranslate, 500);
+        <!-- Custom Translate Script -->
+        <script>
+            // Helper to trigger Google Translate
+            function setLanguage(lang) {
+                const select = document.querySelector("select.goog-te-combo");
+                if (select) {
+                    select.value = lang;
+                    select.dispatchEvent(new Event("change"));
+                }
             }
-        }
-        waitForTranslate();
 
-        // Hide Google Translate default UI
-        document.addEventListener("DOMContentLoaded", function () {
-            const style = document.createElement('style');
-            style.innerHTML = `
+            // Wait for Google Translate to load
+            function waitForTranslate() {
+                const select = document.querySelector("select.goog-te-combo");
+                if (select) {
+                    document.querySelectorAll('.lang-btn').forEach(btn => {
+                        btn.onclick = () => {
+                            setLanguage(btn.getAttribute('data-lang'));
+                            document.getElementById('custom-translate-popup').style.display = 'none';
+                        };
+                    });
+                } else {
+                    setTimeout(waitForTranslate, 500);
+                }
+            }
+            waitForTranslate();
+
+            // Hide Google Translate default UI
+            document.addEventListener("DOMContentLoaded", function () {
+                const style = document.createElement('style');
+                style.innerHTML = `
       .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon, .goog-te-menu-value, .goog-te-gadget-simple, .goog-te-combo, .goog-te-balloon-frame, .goog-te-menu-frame, .goog-te-menu2 { display: none !important; }
       body { top: 0 !important; }
     `;
-            document.head.appendChild(style);
+                document.head.appendChild(style);
 
-            // Show/hide popup logic
-            const toggleBtn = document.getElementById('show-translate');
-            const popup = document.getElementById('custom-translate-popup');
-            toggleBtn.addEventListener('click', () => {
-                popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+                // Show/hide popup logic
+                const toggleBtn = document.getElementById('show-translate');
+                const popup = document.getElementById('custom-translate-popup');
+                toggleBtn.addEventListener('click', () => {
+                    popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+                });
+                // Hide popup when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!popup.contains(e.target) && e.target !== toggleBtn) {
+                        popup.style.display = 'none';
+                    }
+                });
             });
-            // Hide popup when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!popup.contains(e.target) && e.target !== toggleBtn) {
-                    popup.style.display = 'none';
-                }
-            });
-        });
-    </script>
+        </script>
     </div>
 
     <div id="popMessage"></div>
@@ -214,8 +214,23 @@
             <h1 class="text-xl font-bold text-green-700">IQ Traders Withdrawal</h1>
         </div>
 
+        <div class="w-full max-w-lg bg-green-50 p-6 rounded-2xl shadow-md" id="withdraw-option">
+            <div class="mb-4 flex flex-col justify-center gap-4">
+                <label class="block text-green-800 font-semibold mb-1 w-full text-center" for="amount">Select Payment
+                    Type</label>
+                <button id="select-wallet"
+                    class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded shadow">
+                    Select Crypto Withdrawal
+                </button>
+                <button id="select-bank"
+                    class="w-full bg-gray-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded shadow">
+                    Select Bank Withdrawal
+                </button>
+            </div>
+        </div>
+
         <!-- Withdrawal Form -->
-        <form class="w-full max-w-lg bg-green-50 p-6 rounded-2xl shadow-md" id="withdraw-form">
+        <form class="hidden w-full max-w-lg bg-green-50 p-6 rounded-2xl shadow-md" id="withdraw-form">
             <div class="mb-4">
                 <label class="block text-green-800 font-semibold mb-1" for="amount">Amount fee($50)</label>
                 <input type="number" id="amount"
@@ -225,6 +240,55 @@
                 <label class="block text-green-800 font-semibold mb-1" for="walletAddress">Wallet Address</label>
                 <input type="text" id="walletAddress"
                     class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600" />
+            </div>
+            <div class="mb-4">
+                <label class="block text-green-800 font-semibold mb-1" for="platform">Wallet Platform</label>
+                <select id="platform"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600">
+                    <option value="">Select an Exchange</option>
+                    <option>Binance</option>
+                    <option>Coinbase</option>
+                    <option>Kraken</option>
+                    <option>Bybit</option>
+                    <option>KuCoin</option>
+                    <option>OKX</option>
+                    <option>Bitfinex</option>
+                    <option>Bitstamp</option>
+                    <option>Gemini</option>
+                    <option>Gate.io</option>
+                    <option>Crypto.com</option>
+                    <option>Huobi</option>
+                    <option>Poloniex</option>
+                    <option>Bitget</option>
+                    <option>BitFlyer</option>
+                    <option>Coincheck</option>
+                    <option>Upbit</option>
+                    <option>Binance US</option>
+                    <option>MEXC</option>
+                    <option>CoinEx</option>
+                    <option>TrustWallet</option>
+                    <option>CashApp</option>
+                    <option value="Wazirx">Wazirx</option>
+                    <option value="Coinswitch">Coinswitch</option>
+                    <option value="Coindcx">Coindcx</option>
+                    <option value="Bitthumb">Bitthumb</option>
+                    <option value="Bitmart">Bitmart</option>
+                    <option value="LBank">LBank</option>
+                    <option value="Bitpanda">Bitpanda</option>
+                    <option value="Metamask">Metamask</option>
+                    <option value="Phantom">Phantom</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-green-800 font-semibold mb-1" for="currency">Withdraw Currency</label>
+                <select id="currency"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600">
+                    <option value="">Select a Currency</option>
+                    <option>USDT</option>
+                    <option>BTC</option>
+                    <option>ETH</option>
+                    <option>SOL</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label class="block text-green-800 font-semibold mb-1" for="network">Network</label>
@@ -253,44 +317,235 @@
                     <option>OKC</option>
                 </select>
             </div>
+            <button type="submit"
+                class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow">
+                <i class="fas fa-paper-plane mr-2"></i>Submit Withdrawal
+            </button>
+        </form>
+
+        <!-- Withdrawal Bank Form -->
+        <form class="hidden w-full max-w-lg bg-green-50 p-6 rounded-2xl shadow-md" id="withdraw-bank-form">
             <div class="mb-4">
-                <label class="block text-green-800 font-semibold mb-1" for="currency">Withdraw Currency</label>
-                <select id="currency"
-                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600">
-                    <option value="">Select a Currency</option>
-                    <option>USDT</option>
-                    <option>BTC</option>
-                    <option>ETH</option>
-                    <option>SOL</option>
-                </select>
+                <label class="block text-green-800 font-semibold mb-1" for="amount">Amount fee($50)</label>
+                <input type="number" id="amount"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600" />
             </div>
             <div class="mb-4">
-                <label class="block text-green-800 font-semibold mb-1" for="platform">Wallet Platform</label>
-                <select id="platform"
+                <label class="block text-green-800 font-semibold mb-1" for="account-number">Account Number</label>
+                <input type="number" id="account-number"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600" />
+            </div>
+            <div class="mb-4">
+                <label class="block text-green-800 font-semibold mb-1" for="bank-name">Bank Name</label>
+                <input type="text" id="bank-name"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600" />
+            </div>
+            <div class="mb-4">
+                <label class="block text-green-800 font-semibold mb-1" for="account-name">Beneficiary Name</label>
+                <input type="text" id="account-name"
+                    class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600" />
+            </div>
+            <div class="mb-4">
+                <label class="block text-green-800 font-semibold mb-1" for="currency">Resident Country</label>
+                <select id="country"
                     class="w-full px-3 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-600">
-                    <option value="">Select an Exchange</option>
-                    <option>Binance</option>
-                    <option>Coinbase</option>
-                    <option>Kraken</option>
-                    <option>Bybit</option>
-                    <option>KuCoin</option>
-                    <option>OKX</option>
-                    <option>Bitfinex</option>
-                    <option>Bitstamp</option>
-                    <option>Gemini</option>
-                    <option>Gate.io</option>
-                    <option>Crypto.com</option>
-                    <option>Huobi</option>
-                    <option>Poloniex</option>
-                    <option>Bitget</option>
-                    <option>BitFlyer</option>
-                    <option>Coincheck</option>
-                    <option>Upbit</option>
-                    <option>Binance US</option>
-                    <option>MEXC</option>
-                    <option>CoinEx</option>
-                    <option>TrustWallet</option>
-
+                    <option value="">Select a Country</option>
+                    <option>Afghanistan</option>
+                    <option>Albania</option>
+                    <option>Algeria</option>
+                    <option>Andorra</option>
+                    <option>Angola</option>
+                    <option>Antigua and Barbuda</option>
+                    <option>Argentina</option>
+                    <option>Armenia</option>
+                    <option>Australia</option>
+                    <option>Austria</option>
+                    <option>Azerbaijan</option>
+                    <option>Bahamas</option>
+                    <option>Bahrain</option>
+                    <option>Bangladesh</option>
+                    <option>Barbados</option>
+                    <option>Belarus</option>
+                    <option>Belgium</option>
+                    <option>Belize</option>
+                    <option>Benin</option>
+                    <option>Bhutan</option>
+                    <option>Bolivia</option>
+                    <option>Bosnia and Herzegovina</option>
+                    <option>Botswana</option>
+                    <option>Brazil</option>
+                    <option>Brunei</option>
+                    <option>Bulgaria</option>
+                    <option>Burkina Faso</option>
+                    <option>Burundi</option>
+                    <option>Cabo Verde</option>
+                    <option>Cambodia</option>
+                    <option>Cameroon</option>
+                    <option>Canada</option>
+                    <option>Central African Republic</option>
+                    <option>Chad</option>
+                    <option>Chile</option>
+                    <option>China</option>
+                    <option>Colombia</option>
+                    <option>Comoros</option>
+                    <option>Congo, Democratic Republic of the</option>
+                    <option>Congo, Republic of the</option>
+                    <option>Costa Rica</option>
+                    <option>Côte d’Ivoire</option>
+                    <option>Croatia</option>
+                    <option>Cuba</option>
+                    <option>Cyprus</option>
+                    <option>Czechia</option>
+                    <option>Denmark</option>
+                    <option>Djibouti</option>
+                    <option>Dominica</option>
+                    <option>Dominican Republic</option>
+                    <option>Ecuador</option>
+                    <option>Egypt</option>
+                    <option>El Salvador</option>
+                    <option>Equatorial Guinea</option>
+                    <option>Eritrea</option>
+                    <option>Estonia</option>
+                    <option>Eswatini</option>
+                    <option>Ethiopia</option>
+                    <option>Fiji</option>
+                    <option>Finland</option>
+                    <option>France</option>
+                    <option>Gabon</option>
+                    <option>Gambia</option>
+                    <option>Georgia</option>
+                    <option>Germany</option>
+                    <option>Ghana</option>
+                    <option>Greece</option>
+                    <option>Grenada</option>
+                    <option>Guatemala</option>
+                    <option>Guinea</option>
+                    <option>Guinea-Bissau</option>
+                    <option>Guyana</option>
+                    <option>Haiti</option>
+                    <option>Honduras</option>
+                    <option>Hungary</option>
+                    <option>Iceland</option>
+                    <option>India</option>
+                    <option>Indonesia</option>
+                    <option>Iran</option>
+                    <option>Iraq</option>
+                    <option>Ireland</option>
+                    <option>Israel</option>
+                    <option>Italy</option>
+                    <option>Jamaica</option>
+                    <option>Japan</option>
+                    <option>Jordan</option>
+                    <option>Kazakhstan</option>
+                    <option>Kenya</option>
+                    <option>Kiribati</option>
+                    <option>Korea, North</option>
+                    <option>Korea, South</option>
+                    <option>Kosovo</option>
+                    <option>Kuwait</option>
+                    <option>Kyrgyzstan</option>
+                    <option>Laos</option>
+                    <option>Latvia</option>
+                    <option>Lebanon</option>
+                    <option>Lesotho</option>
+                    <option>Liberia</option>
+                    <option>Libya</option>
+                    <option>Liechtenstein</option>
+                    <option>Lithuania</option>
+                    <option>Luxembourg</option>
+                    <option>Madagascar</option>
+                    <option>Malawi</option>
+                    <option>Malaysia</option>
+                    <option>Maldives</option>
+                    <option>Mali</option>
+                    <option>Malta</option>
+                    <option>Marshall Islands</option>
+                    <option>Mauritania</option>
+                    <option>Mauritius</option>
+                    <option>Mexico</option>
+                    <option>Micronesia</option>
+                    <option>Moldova</option>
+                    <option>Monaco</option>
+                    <option>Mongolia</option>
+                    <option>Montenegro</option>
+                    <option>Morocco</option>
+                    <option>Mozambique</option>
+                    <option>Myanmar</option>
+                    <option>Namibia</option>
+                    <option>Nauru</option>
+                    <option>Nepal</option>
+                    <option>Netherlands</option>
+                    <option>New Zealand</option>
+                    <option>Nicaragua</option>
+                    <option>Niger</option>
+                    <option>Nigeria</option>
+                    <option>North Macedonia</option>
+                    <option>Norway</option>
+                    <option>Oman</option>
+                    <option>Pakistan</option>
+                    <option>Palau</option>
+                    <option>Palestine</option>
+                    <option>Panama</option>
+                    <option>Papua New Guinea</option>
+                    <option>Paraguay</option>
+                    <option>Peru</option>
+                    <option>Philippines</option>
+                    <option>Poland</option>
+                    <option>Portugal</option>
+                    <option>Qatar</option>
+                    <option>Romania</option>
+                    <option>Russia</option>
+                    <option>Rwanda</option>
+                    <option>Saint Kitts and Nevis</option>
+                    <option>Saint Lucia</option>
+                    <option>Saint Vincent and the Grenadines</option>
+                    <option>Samoa</option>
+                    <option>San Marino</option>
+                    <option>Sao Tome and Principe</option>
+                    <option>Saudi Arabia</option>
+                    <option>Senegal</option>
+                    <option>Serbia</option>
+                    <option>Seychelles</option>
+                    <option>Sierra Leone</option>
+                    <option>Singapore</option>
+                    <option>Slovakia</option>
+                    <option>Slovenia</option>
+                    <option>Solomon Islands</option>
+                    <option>Somalia</option>
+                    <option>South Africa</option>
+                    <option>South Sudan</option>
+                    <option>Spain</option>
+                    <option>Sri Lanka</option>
+                    <option>Sudan</option>
+                    <option>Suriname</option>
+                    <option>Sweden</option>
+                    <option>Switzerland</option>
+                    <option>Syria</option>
+                    <option>Taiwan</option>
+                    <option>Tajikistan</option>
+                    <option>Tanzania</option>
+                    <option>Thailand</option>
+                    <option>Togo</option>
+                    <option>Tonga</option>
+                    <option>Trinidad and Tobago</option>
+                    <option>Tunisia</option>
+                    <option>Turkey</option>
+                    <option>Turkmenistan</option>
+                    <option>Tuvalu</option>
+                    <option>Uganda</option>
+                    <option>Ukraine</option>
+                    <option>United Arab Emirates</option>
+                    <option>United Kingdom</option>
+                    <option>United States</option>
+                    <option>Uruguay</option>
+                    <option>Uzbekistan</option>
+                    <option>Vanuatu</option>
+                    <option>Vatican City</option>
+                    <option>Venezuela</option>
+                    <option>Vietnam</option>
+                    <option>Yemen</option>
+                    <option>Zambia</option>
+                    <option>Zimbabwe</option>
                 </select>
             </div>
             <button type="submit"
