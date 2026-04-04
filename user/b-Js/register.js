@@ -8,7 +8,7 @@ import {
   sendEmailVerification,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 import {
-  getFirestore,
+  initializeFirestore,
   setDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
@@ -37,6 +37,10 @@ if (logUser !== null) {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+  cacheSizeBytes: -1,
+});
 
 function getFormattedDateTime(locale = "en-US", options = {}) {
   const now = new Date();

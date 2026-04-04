@@ -6,12 +6,13 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 import {
-  getFirestore,
+  initializeFirestore,
   getDocs,
   collection,
   query,
   doc,
   updateDoc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -31,7 +32,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
-const db = getFirestore();
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+  cacheSizeBytes: -1,
+});
 
 const userTableBody = document.getElementById("user-table-body");
 const popMessage = document.getElementById("confirmation-popup");
@@ -49,11 +53,10 @@ onAuthStateChanged(auth, async (user) => {
         <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
                 <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="${
-                      userData.Picture === ""
-                        ? "../user/images/avatar/user-default.png"
-                        : userData.Picture
-                    }" alt="${userData.firstName}">
+                    <img class="h-10 w-10 rounded-full" src="${userData.Picture === ""
+        ? "../user/images/avatar/user-default.png"
+        : userData.Picture
+      }" alt="${userData.firstName}">
                 </div>
             </div>
         </td>
@@ -64,51 +67,67 @@ onAuthStateChanged(auth, async (user) => {
             ${userData.email}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            ${userData.depositWallet === "" ? "None" : userData.depositWallet}
+            ${userData.Phone || "N/A"}
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            ${userData.Region || "N/A"}
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            ${userData.Gender || "N/A"}
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            ${userData.Registered_Date || "N/A"}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-balance-${id}">
             $${Math.floor(userData.Balance)}
-            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+            <button class="btn btn-update-d update-balance-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-investment-${id}">
             $${Math.floor(userData.Investment_Balance)}
-            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+            <button class="btn btn-update-d update-investment-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-profit-${id}">
             $${Math.floor(userData.Profit_Balance)}
-            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+            <button class="btn btn-update-d update-profit-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-bonus-${id}">
             $${Math.floor(userData.Bonus)}
-            <button class="btn btn-update-d update-btn-id" data-user-id="${id}">
+            <button class="btn btn-update-d update-bonus-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
             <span class="${getStatusBadgeVariant(
-              userData.KYC === 0 ? "Inactive" : "Active"
-            )} px-2 py-1 rounded-full text-xs font-semibold">
+        userData.KYC === 0 ? "Inactive" : "Active"
+      )} px-2 py-1 rounded-full text-xs font-semibold">
                 ${userData.KYC === 0 ? "Not Verified" : "Verified"}
             </span>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 gallery">
-          ${
-            userData.Payment_Screenshot === undefined ||
-            userData.Payment_Screenshot === ""
-              ? "No Payment Made"
-              : `<img src="${userData.Payment_Screenshot}" class="gallery-item"></img>`
-          }
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2 flex">
+          <button class="edit-profile-btn btn btn-update-d" data-user-id="${id}" title="Edit Profile">
+            <i class="fa-solid fa-edit"></i>
+          </button>
+          <button class="delete-profile-btn btn btn-update-d bg-red-500 hover:bg-red-600" data-user-id="${id}" title="Delete Profile">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          ${userData.Payment_Screenshot === undefined ||
+        userData.Payment_Screenshot === ""
+        ? ""
+        : `<img src="${userData.Payment_Screenshot}" class="gallery-item h-8 w-8 rounded cursor-pointer" alt="Payment"></img>`
+      }
         </td>
         `;
     userTableBody.appendChild(row);
   });
   updateUserDetails();
+  editProfileEvent();
+  deleteProfileEvent();
   expandImageItem();
 });
 
@@ -257,5 +276,117 @@ function expandImageItem() {
       expandedContainer.style.display = "none";
       document.body.style.overflow = "";
     }
+  });
+}
+
+function editProfileEvent() {
+  document.querySelectorAll(".edit-profile-btn").forEach((editBtn) => {
+    editBtn.addEventListener("click", async () => {
+      const userId = editBtn.dataset.userId;
+      const docRef = doc(db, "users", userId);
+
+      // Fetch actual user data from Firestore
+      const docSnap = await getDocs(query(collection(db, "users"), query(collection(db, "users"))));
+      let userData = null;
+      docSnap.forEach((doc) => {
+        if (doc.id === userId) {
+          userData = doc.data();
+        }
+      });
+
+      if (!userData) return;
+
+      popMessage.style.display = "flex";
+      popMessage.innerHTML = `
+      <div class="animation-container-p">
+        <div class="container" style="max-height: 80vh; overflow-y: auto;">
+          <div class="form-group">
+            <label class="label-header">Edit User Profile</label>
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Phone</label>
+            <input type="text" id="edit-phone-${userId}" class="form-control" placeholder="Phone" value="${userData.Phone || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Region</label>
+            <input type="text" id="edit-region-${userId}" class="form-control" placeholder="Region" value="${userData.Region || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Gender</label>
+            <input type="text" id="edit-gender-${userId}" class="form-control" placeholder="Gender" value="${userData.Gender || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Date of Birth</label>
+            <input type="text" id="edit-dob-${userId}" class="form-control" placeholder="Date of Birth" value="${userData.Date_of_Birth || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Nationality</label>
+            <input type="text" id="edit-nationality-${userId}" class="form-control" placeholder="Nationality" value="${userData.Nationality || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Address</label>
+            <input type="text" id="edit-address-${userId}" class="form-control" placeholder="Address" value="${userData.Address || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Investing Currency</label>
+            <input type="text" id="edit-currency-${userId}" class="form-control" placeholder="Investing Currency" value="${userData.Investing_Currency || ""}" />
+            <label class="text-xs font-semibold text-gray-600 block mt-3">Deposit Wallet Address</label>
+            <input type="text" id="edit-wallet-${userId}" class="form-control" placeholder="Deposit Wallet Address" value="${userData.depositWallet || ""}" />
+          </div>        
+          <div class="button-group">
+            <button id="save-profile-${userId}" class="button update-button gg-btn">Save Changes</button>
+            <button id="cancel-button" class="button cancel-button">Cancel</button>
+          </div>
+        </div>  
+      </div>
+      `;
+
+      const saveBtn = document.getElementById(`save-profile-${userId}`);
+      saveBtn.addEventListener("click", () => {
+        const updateData = {
+          Phone: document.getElementById(`edit-phone-${userId}`).value,
+          Region: document.getElementById(`edit-region-${userId}`).value,
+          Gender: document.getElementById(`edit-gender-${userId}`).value,
+          Date_of_Birth: document.getElementById(`edit-dob-${userId}`).value,
+          Nationality: document.getElementById(`edit-nationality-${userId}`).value,
+          Address: document.getElementById(`edit-address-${userId}`).value,
+          Investing_Currency: document.getElementById(`edit-currency-${userId}`).value,
+          depositWallet: document.getElementById(`edit-wallet-${userId}`).value,
+        };
+
+        updateDoc(docRef, updateData).then(() => {
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+          location.reload();
+        });
+      });
+
+      cancelEvent();
+    });
+  });
+}
+
+function deleteProfileEvent() {
+  document.querySelectorAll(".delete-profile-btn").forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", () => {
+      const userId = deleteBtn.dataset.userId;
+      const row = deleteBtn.closest("tr");
+      const userName = row.querySelector("td:nth-child(2)").textContent;
+
+      popMessage.style.display = "flex";
+      popMessage.innerHTML = `
+      <div class="animation-container-p">
+        <div class="container">
+          <div class="form-group">
+            <label class="label-header">Delete User Profile</label>
+            <p style="margin: 10px 0; color: #d32f2f;">Are you sure you want to delete this user profile?</p>
+            <p style="margin: 10px 0; color: #666;">User: <strong>${userName}</strong></p>
+          </div>        
+          <div class="button-group">
+            <button id="confirm-delete-${userId}" class="button update-button gg-btn" style="background-color: #d32f2f;">Delete</button>
+            <button id="cancel-button" class="button cancel-button">Cancel</button>
+          </div>
+        </div>  
+      </div>
+      `;
+
+      const confirmBtn = document.getElementById(`confirm-delete-${userId}`);
+      confirmBtn.addEventListener("click", () => {
+        const docRef = doc(db, "users", userId);
+        deleteDoc(docRef).then(() => {
+          popMessage.innerHTML = "";
+          popMessage.style.display = "none";
+          location.reload();
+        });
+      });
+
+      cancelEvent();
+    });
   });
 }
