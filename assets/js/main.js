@@ -20,37 +20,41 @@ signinLink.addEventListener("click", () => {
   signupDiv.classList.add("hidden");
 });
 
-let a = 0;
+let signinVisible = false;
 signinPIcon.addEventListener("click", () => {
-  if (a === 0) {
+  if (!signinVisible) {
     signinPIcon.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
     signinPassword.setAttribute("type", "text");
-    a = 1;
+    signinVisible = true;
   } else {
     signinPIcon.innerHTML = `<i class="fa-solid fa-eye"></i>`;
     signinPassword.setAttribute("type", "password");
-    a = 0;
+    signinVisible = false;
   }
 });
+
+let signupVisible = false;
 signupPIcon.addEventListener("click", () => {
-  if (a === 0) {
+  if (!signupVisible) {
     signupPIcon.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
     signupPassword.setAttribute("type", "text");
-    a = 1;
+    signupVisible = true;
   } else {
     signupPIcon.innerHTML = `<i class="fa-solid fa-eye"></i>`;
     signupPassword.setAttribute("type", "password");
-    a = 0;
+    signupVisible = false;
   }
 });
+
+let confirmSignupVisible = false;
 confirmSignupPIcon.addEventListener("click", () => {
-  if (a === 0) {
-    confirmSignUpPassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+  if (!confirmSignupVisible) {
+    confirmSignupPIcon.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
     confirmSignUpPassword.setAttribute("type", "text");
-    a = 1;
+    confirmSignupVisible = true;
   } else {
     confirmSignupPIcon.innerHTML = `<i class="fa-solid fa-eye"></i>`;
     confirmSignUpPassword.setAttribute("type", "password");
-    a = 0;
+    confirmSignupVisible = false;
   }
 });

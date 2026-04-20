@@ -63,7 +63,6 @@ const confirmSignUpPassword = document.getElementById("confirm-signup-password")
 signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const auth = getAuth();
-  const db = getFirestore(app);
 
   // DATE & TIME
   const shortDateTime = getFormattedDateTime("en-US", {
