@@ -137,64 +137,6 @@
       if (!logAdmin) {
         window.location.href = "./index.html";
       }
-      const mockUsers = [
-        {
-          id: "",
-          name: "",
-          email: "",
-          role: "",
-          lastLogin: "",
-          status: "",
-          profilePicture: "",
-        },
-      ];
-
-      const displayUsers = (users) => {
-        const userTableBody = document.getElementById("user-table-body");
-        userTableBody.innerHTML = ""; // Clear existing rows
-
-        users.forEach((user) => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                `;
-          userTableBody.appendChild(row);
-        });
-      };
-
-      const fetchData = async () => {
-        try {
-          // Show loading states
-          document
-            .getElementById("user-data-loading")
-            .classList.remove("hidden");
-          document.getElementById("user-data-table").classList.add("hidden");
-          document.getElementById("user-data-error").classList.add("hidden");
-
-          // Simulate fetching data with promises and timeouts
-          const usersPromise = new Promise((resolve) =>
-            setTimeout(() => resolve(mockUsers), 1000),
-          );
-
-          const usersData = await usersPromise;
-
-          // Update UI with fetched data
-          displayUsers(usersData);
-
-          // Hide loading states, show data tables
-          document.getElementById("user-data-loading").classList.add("hidden");
-          document.getElementById("user-data-table").classList.remove("hidden");
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          // Handle errors (show error message in UI)
-          document.getElementById("user-data-loading").classList.add("hidden");
-          document.getElementById("user-data-error").classList.remove("hidden");
-          document.getElementById("user-data-error").textContent =
-            "Failed to fetch user data.";
-        }
-      };
-
-      // Fetch data when the page loads
-      window.onload = fetchData;
     </script>
     <script type="module" src="./script.js"></script>
   </body>

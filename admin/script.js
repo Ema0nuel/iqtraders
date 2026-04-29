@@ -45,6 +45,8 @@ onAuthStateChanged(auth, async (user) => {
   const q = query(collection(db, "users"));
 
   const querySnapshot = await getDocs(q);
+  userTableBody.innerHTML = ""; // Clear any existing content (like mock data)
+  
   querySnapshot.forEach((doc) => {
     let userData = doc.data();
     let id = doc.id;
@@ -53,7 +55,7 @@ onAuthStateChanged(auth, async (user) => {
         <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
                 <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="${userData.Picture === ""
+                    <img class="h-10 w-10 rounded-full" src="${userData.Picture === "" || !userData.Picture
         ? "../user/images/avatar/user-default.png"
         : userData.Picture
       }" alt="${userData.firstName}">
@@ -79,26 +81,26 @@ onAuthStateChanged(auth, async (user) => {
             ${userData.Registered_Date || "N/A"}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-balance-${id}">
-            $${Math.floor(userData.Balance)}
-            <button class="btn btn-update-d update-balance-btn" data-user-id="${id}">
+            $${Math.floor(userData.Balance || 0)}
+            <button class="btn btn-update-d update-btn-id update-balance-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-investment-${id}">
-            $${Math.floor(userData.Investment_Balance)}
-            <button class="btn btn-update-d update-investment-btn" data-user-id="${id}">
+            $${Math.floor(userData.Investment_Balance || 0)}
+            <button class="btn btn-update-d update-btn-id update-investment-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-profit-${id}">
-            $${Math.floor(userData.Profit_Balance)}
-            <button class="btn btn-update-d update-profit-btn" data-user-id="${id}">
+            $${Math.floor(userData.Profit_Balance || 0)}
+            <button class="btn btn-update-d update-btn-id update-profit-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 user-bonus-${id}">
-            $${Math.floor(userData.Bonus)}
-            <button class="btn btn-update-d update-bonus-btn" data-user-id="${id}">
+            $${Math.floor(userData.Bonus || 0)}
+            <button class="btn btn-update-d update-btn-id update-bonus-btn" data-user-id="${id}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </td>
@@ -125,6 +127,11 @@ onAuthStateChanged(auth, async (user) => {
         `;
     userTableBody.appendChild(row);
   });
+
+  // Hide loading states, show data table
+  document.getElementById("user-data-loading").classList.add("hidden");
+  document.getElementById("user-data-table").classList.remove("hidden");
+
   updateUserDetails();
   editProfileEvent();
   deleteProfileEvent();
@@ -179,13 +186,13 @@ function cancelEvent() {
 function updateEvent(userId, parentElement) {
   const updateBtn = document.getElementById(`update-button-${userId}`);
   const inputValue = document.getElementById(`update-input-${userId}`);
-  let value = parentElement.innerText.slice(1);
-  inputValue.value = Number(value);
+  let valueText = parentElement.innerText.replace('$', '').trim();
+  inputValue.value = parseFloat(valueText) || 0;
   updateBtn.addEventListener("click", () => {
     onAuthStateChanged(auth, (user) => {
       const docRef = doc(db, "users", userId);
       let inputVal = Number(inputValue.value);
-      if (inputVal === "") {
+      if (inputValue.value === "") {
         alert("Enter a value");
       } else {
         if (parentElement.classList.contains(`user-balance-${userId}`)) {
@@ -193,8 +200,7 @@ function updateEvent(userId, parentElement) {
             Balance: Math.floor(inputVal),
           };
           updateDoc(docRef, updateData);
-          parentElement.innerHTML = `
-          $${inputVal} 
+          parentElement.innerHTML = `$${inputVal} 
           <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>`;
@@ -208,8 +214,7 @@ function updateEvent(userId, parentElement) {
             Investment_Balance: Math.floor(inputVal),
           };
           updateDoc(docRef, updateData);
-          parentElement.innerHTML = `
-          $${inputVal} 
+          parentElement.innerHTML = `$${inputVal} 
           <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>`;
@@ -221,8 +226,7 @@ function updateEvent(userId, parentElement) {
             Profit_Balance: Math.floor(inputVal),
           };
           updateDoc(docRef, updateData);
-          parentElement.innerHTML = `
-          $${inputVal} 
+          parentElement.innerHTML = `$${inputVal} 
           <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>`;
@@ -234,11 +238,10 @@ function updateEvent(userId, parentElement) {
             Bonus: Math.floor(inputVal),
           };
           updateDoc(docRef, updateData);
-          parentElement.innerHTML = `
-        $${inputVal} 
-        <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
-        <i class="fa-solid fa-pen-to-square"></i>
-        </button>`;
+          parentElement.innerHTML = `$${inputVal} 
+          <button class="btn btn-update-d update-btn-id" data-user-id="${userId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>`;
           updateUserDetails();
           popMessage.innerHTML = "";
           popMessage.style.display = "none";
